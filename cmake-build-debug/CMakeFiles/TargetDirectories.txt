@@ -1,0 +1,3 @@
+C:/Users/paulo/OneDrive/Área de Trabalho/TrabalhoPraticoAEDs1/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir
+C:/Users/paulo/OneDrive/Área de Trabalho/TrabalhoPraticoAEDs1/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/paulo/OneDrive/Área de Trabalho/TrabalhoPraticoAEDs1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
