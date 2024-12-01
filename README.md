@@ -2,6 +2,7 @@
 
 ## Descrição  
 Este projeto é um sistema interativo de gerenciamento de uma pizzaria, que permite administrar cardápios, ingredientes e vendas. O programa é escrito em C utilizando a versão **C17** e é compilado com o GNU. Ele suporta funcionalidades como CRUD de pizzas e ingredientes, venda de pizzas com cálculo dinâmico de preços, e exportação/importação de dados para arquivos.  
+![Descrição da imagem](./Untitled.png)
 
 ---
 
