@@ -1,12 +1,6 @@
-#include <stdio.h>
 #include "pizza.h">
 #include "ingrediente.h"
 #include "basics.h"
-
-
-
-
-
 
 
 
@@ -41,6 +35,8 @@ int main(void) {
             }
             respFinal = menu_principal();
         }
+
+
 
     return 0;
 }

@@ -1,9 +1,4 @@
-//
-// Created by paulo on 30/11/2024.
-//
-
-
-//crud ingrediente
+#include "ingrediente.h"
 
 void adicionar_ingrediente_CRUD(){}
 void visualizar_ingrediente_CRUD(){}
