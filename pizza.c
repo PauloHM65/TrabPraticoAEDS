@@ -30,7 +30,7 @@ int menu_pizza() {
 
 void CRUD_PIZZA() {
     int respOpcao=0;
-    respOpcao = menu_pizza();
+    respOpcao = menu_pizza(); // arrumar, ta errado
     while(!(respOpcao== 1 ||respOpcao== 2
         || respOpcao== 3|| respOpcao== 4)) {
         switch(respOpcao) {
