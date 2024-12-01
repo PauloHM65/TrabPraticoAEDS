@@ -31,4 +31,20 @@ int menu_pizza() {
 void CRUD_PIZZA() {
     int respOpcao=0;
     respOpcao = menu_pizza();
+    while(!(respOpcao== 1 ||respOpcao== 2
+        || respOpcao== 3|| respOpcao== 4)) {
+        switch(respOpcao) {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            default:
+                break;
+        }
+        respOpcao = menu_pizza();
+    }
 }
