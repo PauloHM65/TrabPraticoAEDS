@@ -25,17 +25,17 @@ void VENDA() {
 
 int menu_principal() {
     int NumeroOperação=0;
-    printf("-----------------------------\n");
-    printf("Digite a numero da operacao:\n");
-    printf("-----------------------------\n");
-    printf(" 1 - Pizza\n");
-    printf(" 2 - Ingredientes\n");
-    printf("-----------------------------\n");
-    printf(" 3 - Realizar uma venda\n");
-    printf("-----------------------------\n");
-    printf("-----------------------------\n");
-    printf(" 4 - Encerrar o programa\n");
-    printf("-----------------------------\n");
+    printf("\n");
+    printf("*****************************|\n");
+    printf("Digite a numero da operacao: |\n");
+    printf("*****************************|\n");
+    printf(" 1 - Pizza                   |\n");
+    printf(" 2 - Ingredientes            |\n");
+    printf("-----------------------------|\n");
+    printf(" 3 - Realizar uma venda      |\n");
+    printf("-----------------------------|\n");
+    printf(" 4 - Encerrar o programa     |\n");
+    printf("*****************************|\n");
     scanf("%d",&NumeroOperação);
     if (!(NumeroOperação == 1 || NumeroOperação == 2 || NumeroOperação == 3|| NumeroOperação == 4)) {
         NumeroOperação = 0;
