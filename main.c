@@ -12,7 +12,7 @@ int main(void) {
     //mostra menu principal e chama o opção selecionada
     respFinal = menu_principal();
     if(respFinal == 4) {
-        printf("!!Programa se encerrando!!\n");
+        printf("!!!Programa se encerrando!!!\n");
     }
     while(respFinal != 4) {
 
