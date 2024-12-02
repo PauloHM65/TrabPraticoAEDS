@@ -1,9 +1,53 @@
 #include "ingrediente.h"
 
-void adicionar_ingrediente_CRUD(){
-    
+Ingredientes* adicionar_ingrediente_CRUD(){
+    Ingredientes *ingrediente;
+    int qnt = 0;//Contador para a quantidade de ingredientes que serao cadastrados
+    char continuar;
+
+    do{
+        ingrediente = realloc(ingrediente, (qnt + 1) * sizeof(Ingredientes));
+        
+        printf("Digite o ID do Ingrediente: ");
+        scanf("%d", &ingrediente[qnt].id);
+        getchar();
+        printf("\n");
+        
+        printf("Digite o nome do Ingrediente: ");
+        fgets(ingrediente[qnt].nome, 30, stdin);
+        ingrediente[qnt].nome[strcspn(ingrediente[qnt].nome, "\n")] = '\0';
+        printf("\n");
+        
+        printf("Digite o preço do Ingrediente: ");
+        scanf("%f", &ingrediente[qnt].preco);
+
+        qnt++;
+
+        printf("Gostaria de adicionar mais um Ingrediente? ");
+        scanf(" %c", &continuar);        
+    }while(continuar == 'S' || continuar == 's'); 
+
+    return ingredientes;
 }
-void visualizar_ingrediente_CRUD(){}
+int quantidade_ingredientes_cadastrados(){
+    int quantidade = 0;
+    char linha[30];
+    
+    FILE* arquivo = fopen("ingredientes.txt", "r");
+    
+    while (fgets(Linha, sizeof(Linha), arquivo) != NULL)
+    {
+        quantidade++;
+    }
+return quantidade;
+}
+void visualizar_ingrediente_CRUD(int qnt){
+    int qnt = quantidade_ingredientes_cadastrados();
+    printf("\nIngredientes cadastrados:\n");
+    for(int i = 0; i < qnt; i++){
+        printf("%d - %s R$%.2f\n", ingrediente[i].id, ingrediente[i].nome, ingrediente[i].preco);
+    }
+}
 void editar_ingrediente_CRUD(){}
 void remover_ingrediente_CRUD(){}
 
