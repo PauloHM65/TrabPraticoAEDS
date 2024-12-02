@@ -16,6 +16,7 @@ typedef struct Ingrediente {
 
 Ingrediente* adicionar_ingrediente_CRUD(int *qnt);
 void visualizar_ingrediente_CRUD();
+void atualizar_ingredientes(Ingrediente *ingrediente, int qnt);
 void editar_ingrediente_CRUD();
 void remover_ingrediente_CRUD();
 
