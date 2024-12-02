@@ -9,12 +9,12 @@
 
 
 typedef struct Ingrediente {
-    int Id;
-    char Nome[20];
-    float Preço;
+    int id;
+    char nome[20];
+    float preco;
 }Ingrediente;
 
-void adicionar_ingrediente_CRUD();
+Ingrediente* adicionar_ingrediente_CRUD(int *qnt);
 void visualizar_ingrediente_CRUD();
 void editar_ingrediente_CRUD();
 void remover_ingrediente_CRUD();

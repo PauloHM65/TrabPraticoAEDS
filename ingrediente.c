@@ -1,12 +1,12 @@
 #include "ingrediente.h"
 
-Ingredientes* adicionar_ingrediente_CRUD(int *qnt){//qnt = quantidade de ingredientes, deve ser inicializado na main e na hora de chamar a funcao passar o seu endereco como parametro
-    Ingredientes *ingrediente = NULL;
+Ingrediente* adicionar_ingrediente_CRUD(int *qnt){//qnt = quantidade de ingredientes, deve ser inicializado na main e na hora de chamar a funcao passar o seu endereco como parametro
+    Ingrediente *ingrediente = NULL;
     char continuar;
-    FILE* arquivo = fopen("Ingredientes.txt", "a");
+    FILE* arquivo = fopen(".//dataPizzaria//Ingredientes.txt", "a");
 
     do{
-        ingrediente = realloc(ingrediente, (*qnt + 1) * sizeof(Ingredientes));
+        ingrediente = realloc(ingrediente, (*qnt + 1) * sizeof(Ingrediente));
         
         printf("Digite o ID do Ingrediente: ");
         scanf("%d", &ingrediente[*qnt].id);
@@ -14,7 +14,7 @@ Ingredientes* adicionar_ingrediente_CRUD(int *qnt){//qnt = quantidade de ingredi
         
         printf("Digite o nome do Ingrediente: ");
         fgets(ingrediente[*qnt].nome, 30, stdin);
-        ingrediente[qnt].nome[strcspn(ingrediente[*qnt].nome, "\n")] = '\0';
+        ingrediente[*qnt].nome[strcspn(ingrediente[*qnt].nome, "\n")] = '\0';
         printf("\n");
         
         printf("Digite o preco do Ingrediente: ");
@@ -30,22 +30,23 @@ Ingredientes* adicionar_ingrediente_CRUD(int *qnt){//qnt = quantidade de ingredi
     }while(continuar == 'S' || continuar == 's'); 
 
     fclose(arquivo);
-    return ingredientes;
+    return ingrediente;
 }
-void visualizar_ingrediente_CRUD(Ingredientes *ingrediente, int qnt){//ingredientes deve ser 
+void visualizar_ingrediente_CRUD(Ingrediente *ingrediente, int qnt){//ingredientes deve ser
     printf("\nIngredientes cadastrados:\n");
     for(int i = 0; i < qnt; i++){
         printf("%d - %s R$%.2f\n", ingrediente[i].id, ingrediente[i].nome, ingrediente[i].preco);
     }
 }
-void editar_ingrediente_CRUD(Ingredientes *ingrediente, int qnt){
+void editar_ingrediente_CRUD(Ingrediente *ingrediente, int qnt){
     char alteracao[10], novo_nome[30];    
-    int id_alteracao, posicao_alteracao;
+    int id_alteracao=0, posicao_alteracao=0;
     float novo_preco = 0.0;
-    FILE* arquivo = fopen("Ingredientes.txt", "a");
+    FILE* arquivo = fopen(".//dataPizzaria//Ingredientes.txt", "a");
 
-    visualizar_ingrediente_CRUD(Ingredientes *ingrediente, int qnt);
+    visualizar_ingrediente_CRUD(ingrediente, qnt);
     printf("Digite o ID do Ingrediente a ser alterado: \n");
+    scanf("%d",&id_alteracao);
     getchar();
 
     for(int i = 0; i < qnt; i++){
@@ -59,15 +60,15 @@ void editar_ingrediente_CRUD(Ingredientes *ingrediente, int qnt){
     alteracao[strcspn(alteracao, "\n")] = '\0';
         
     if(strcmp(alteracao, "nome") == 0){
-    printf("Qual o novo nome?\n");
-    fgets(novo_nome, 30, stdin);
-    novo_nome[strcspn(novo_nome, "\n")] = '\0';
-    strcpy(ingrediente[posicao_alteracao].nome, novo_nome);
+        printf("Qual o novo nome?\n");
+        fgets(novo_nome, 30, stdin);
+        novo_nome[strcspn(novo_nome, "\n")] = '\0';
+        strcpy(ingrediente[posicao_alteracao].nome, novo_nome);
     }else if(strcmp(alteracao, "preco") == 0){
-    printf("Qual o novo preco?\n");
-    scanf("%f", &novo_preco);
-    getchar();
-    ingrediente[posicao_alteracao].preco = novo_preco;
+        printf("Qual o novo preco?\n");
+        scanf("%f", &novo_preco);
+        getchar();
+        ingrediente[posicao_alteracao].preco = novo_preco;
     }
         
 }
