@@ -1,0 +1,410 @@
+Index: basics.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#include \"basics.h\"\r\n\r\n//vender pizza\r\n\r\nvoid venda_pizza(){}\r\nvoid venda_pizza_cardapio(){}\r\nvoid venda_pizza_adiciona_ingrediente(){}\r\n/*O preço final da pizza deve incluir o valor base mais o custo de\r\nqualquer ingrediente extra.*/\r\n\r\n\r\n//Exportar e Importar Dados\r\n//exportação\r\nvoid salvar_cardapio_pizza(){}\r\nvoid salvar_cardapio_ingedientes(){}\r\n//importação\r\nvoid ler_cardapio_pizza(){}\r\nvoid ler_cardapio_ingedientes(){}\r\n\r\nvoid VENDA() {\r\n    printf(\"VENDA:\\n\");\r\n}\r\n\r\n\r\n\r\nint menu_principal() {\r\n    int NumeroOperação=0;\r\n    printf(\"\\n\");\r\n    printf(\"*****************************|\\n\");\r\n    printf(\"Digite a numero da operacao: |\\n\");\r\n    printf(\"*****************************|\\n\");\r\n    printf(\" 1 - Pizza                   |\\n\");\r\n    printf(\" 2 - Ingredientes            |\\n\");\r\n    printf(\"-----------------------------|\\n\");\r\n    printf(\" 3 - Realizar uma venda      |\\n\");\r\n    printf(\"-----------------------------|\\n\");\r\n    printf(\" 4 - Encerrar o programa     |\\n\");\r\n    printf(\"*****************************|\\n\");\r\n    scanf(\"%d\",&NumeroOperação);\r\n    if (!(NumeroOperação == 1 || NumeroOperação == 2 || NumeroOperação == 3|| NumeroOperação == 4)) {\r\n        NumeroOperação = 0;\r\n    }\r\n    return NumeroOperação;\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/basics.c b/basics.c
+--- a/basics.c	(revision bf1dcda84f383eae2ef888124101d428cbee10a6)
++++ b/basics.c	(date 1733176950450)
+@@ -1,3 +1,5 @@
++#include "pizza.h"
++#include "ingrediente.h"
+ #include "basics.h"
+ 
+ //vender pizza
+@@ -17,9 +19,6 @@
+ void ler_cardapio_pizza(){}
+ void ler_cardapio_ingedientes(){}
+ 
+-void VENDA() {
+-    printf("VENDA:\n");
+-}
+ 
+ 
+ 
+@@ -41,4 +40,42 @@
+         NumeroOperação = 0;
+     }
+     return NumeroOperação;
++}
++void CRUD_PIZZA() {
++    int respPizza =0;
++    do {
++        respPizza =menu_pizza();
++    }while(respPizza==0);
++}
++void CRUD_INGREDIENTE(int *qtd) {
++    int respIngrediente =0, qtdIngrediente=0;
++    do {
++        respIngrediente = menu_ingrediente();
++        switch(respIngrediente) {
++            case 1:
++                adicionar_ingrediente_CRUD(qtd);
++            break;
++            case 2:
++                visualizar_ingrediente_CRUD(ingrediente, *qtd);
++            break;
++            case 3:
++                editar_ingrediente_CRUD(ingrediente,*qtd);
++            break;
++            case 4:
++                remover_ingrediente_CRUD();
++            break;
++            case 0:
++                printf(" --> CRUD_INGREDIENTE encerrando!!<--\n");
++            break;
++            default:
++                printf("Opcao invalida!! Tente novamente");
++        }
++    }while(respIngrediente != 0);
++
++}
++void VENDA() {
++    int respVenda =0;
++    do {
++        respVenda =menu_venda();
++    }while(respVenda==0);
+ }
+\ No newline at end of file
+Index: main.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#include \"pizza.h\"\r\n#include \"ingrediente.h\"\r\n#include \"basics.h\"\r\n\r\n\r\n\r\nint main(void) {\r\n    int respFinal=0, respMenuPrincipal=0;\r\n\r\n    //mostra menu principal e chama o opção selecionada\r\n    respFinal = menu_principal();\r\n    if(respFinal == 4) {\r\n        printf(\"!!!Programa se encerrando!!!\\n\");\r\n    }\r\n    while(respFinal != 4) {\r\n\r\n            switch(respFinal) {\r\n\r\n                case 1:\r\n                    CRUD_PIZZA();\r\n                break;\r\n                case 2:\r\n                    CRUD_INGREDIENTE();\r\n                break;\r\n                case 3:\r\n                    VENDA();\r\n                break;\r\n                default:\r\n                    printf(\"!!-->Opcao invalida<--!!\\n\");\r\n                break;\r\n            }\r\n            respFinal = menu_principal();\r\n            if(respFinal == 4) {\r\n                printf(\"!!!Programa se encerrando!!!\\n\");\r\n            }\r\n    }\r\n\r\n    return 0;\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main.c b/main.c
+--- a/main.c	(revision bf1dcda84f383eae2ef888124101d428cbee10a6)
++++ b/main.c	(date 1733176950436)
+@@ -1,11 +1,9 @@
+-#include "pizza.h"
+-#include "ingrediente.h"
+ #include "basics.h"
+ 
+ 
+ 
+ int main(void) {
+-    int respFinal=0, respMenuPrincipal=0;
++    int respFinal=0, respMenuPrincipal=0, qtdIngrediente=0;
+ 
+     //mostra menu principal e chama o opção selecionada
+     respFinal = menu_principal();
+@@ -20,7 +18,7 @@
+                     CRUD_PIZZA();
+                 break;
+                 case 2:
+-                    CRUD_INGREDIENTE();
++                    CRUD_INGREDIENTE(&qtdIngrediente);
+                 break;
+                 case 3:
+                     VENDA();
+Index: ingrediente.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#include \"ingrediente.h\"\r\n\r\nIngrediente* adicionar_ingrediente_CRUD(int *qnt){//qnt = quantidade de ingredientes, deve ser inicializado na main e na hora de chamar a funcao passar o seu endereco como parametro\r\n    Ingrediente *ingrediente = NULL;\r\n    char continuar;\r\n    FILE* arquivo = fopen(\".//dataPizzaria//Ingredientes.txt\", \"a\");\r\n\r\n    do{\r\n        ingrediente = realloc(ingrediente, (*qnt + 1) * sizeof(Ingrediente));\r\n        \r\n        printf(\"Digite o ID do Ingrediente: \");\r\n        scanf(\"%d\", &ingrediente[*qnt].id);\r\n        getchar();\r\n        \r\n        printf(\"Digite o nome do Ingrediente: \");\r\n        fgets(ingrediente[*qnt].nome, 30, stdin);\r\n        ingrediente[*qnt].nome[strcspn(ingrediente[*qnt].nome, \"\\n\")] = '\\0';\r\n        printf(\"\\n\");\r\n        \r\n        printf(\"Digite o preco do Ingrediente: \");\r\n        scanf(\"%f\", &ingrediente[*qnt].preco);\r\n\r\n         fprintf(arquivo, \"%d - %s R$%.2f\\n\", ingrediente[*qnt].id, ingrediente[*qnt].nome, ingrediente[*qnt].preco);\r\n        \r\n        (*qnt)++;\r\n\r\n        printf(\"\\n\");\r\n        printf(\"Gostaria de adicionar mais um Ingrediente?(S ou N) \");\r\n        scanf(\" %c\", &continuar);        \r\n    }while(continuar == 'S' || continuar == 's'); \r\n\r\n    fclose(arquivo);\r\n    return ingrediente;\r\n}\r\nvoid visualizar_ingrediente_CRUD(Ingrediente *ingrediente, int qnt){//ingredientes deve ser\r\n    printf(\"\\nIngredientes cadastrados:\\n\");\r\n    for(int i = 0; i < qnt; i++){\r\n        printf(\"%d - %s R$%.2f\\n\", ingrediente[i].id, ingrediente[i].nome, ingrediente[i].preco);\r\n    }\r\n}\r\nvoid editar_ingrediente_CRUD(Ingrediente *ingrediente, int qnt){\r\n    char alteracao[10], novo_nome[30];    \r\n    int id_alteracao=0, posicao_alteracao=0;\r\n    float novo_preco = 0.0;\r\n    FILE* arquivo = fopen(\".//dataPizzaria//Ingredientes.txt\", \"a\");\r\n\r\n    visualizar_ingrediente_CRUD(ingrediente, qnt);\r\n    printf(\"Digite o ID do Ingrediente a ser alterado: \\n\");\r\n    scanf(\"%d\",&id_alteracao);\r\n    getchar();\r\n\r\n    for(int i = 0; i < qnt; i++){\r\n        if(ingrediente[i].id == id_alteracao){\r\n            posicao_alteracao = i;\r\n        }\r\n    }\r\n        \r\n    printf(\"O que gostaria de alterar(Nome ou Preco)?: \\n\");\r\n    fgets(alteracao, 10, stdin);\r\n    alteracao[strcspn(alteracao, \"\\n\")] = '\\0';\r\n        \r\n    if(strcmp(alteracao, \"nome\") == 0){\r\n        printf(\"Qual o novo nome?\\n\");\r\n        fgets(novo_nome, 30, stdin);\r\n        novo_nome[strcspn(novo_nome, \"\\n\")] = '\\0';\r\n        strcpy(ingrediente[posicao_alteracao].nome, novo_nome);\r\n    }else if(strcmp(alteracao, \"preco\") == 0){\r\n        printf(\"Qual o novo preco?\\n\");\r\n        scanf(\"%f\", &novo_preco);\r\n        getchar();\r\n        ingrediente[posicao_alteracao].preco = novo_preco;\r\n    }\r\n        \r\n}\r\nvoid remover_ingrediente_CRUD(){}\r\n\r\nint menu_ingrediente() {\r\n    int NumeroOperaçãoingrediente = 0;\r\n    printf(\"\\n\");\r\n    printf(\"*******************************|\\n\");\r\n    printf(\"INGREDIENTE(s):                |\\n\");\r\n    printf(\"*******************************|\\n\");\r\n    printf(\" 1 - Adicionar Ingrediente(s)  |\\n\");\r\n    printf(\" 2 - Visualizar Ingrediente(s) |\\n\");\r\n    printf(\" 3 - Editar Ingrediente(s)     |\\n\");\r\n    printf(\" 4 - Remover Ingrediente(s)    |\\n\");\r\n    printf(\"*******************************|\\n\");\r\n    scanf(\"%d\",&NumeroOperaçãoingrediente);\r\n    if (!(NumeroOperaçãoingrediente == 1 || NumeroOperaçãoingrediente == 2 || NumeroOperaçãoingrediente == 3|| NumeroOperaçãoingrediente == 4)) {\r\n        NumeroOperaçãoingrediente = 0;\r\n    }\r\n    return NumeroOperaçãoingrediente;\r\n}\r\n\r\n\r\n\r\n\r\nvoid CRUD_INGREDIENTE() {\r\n    int respOpcao=0;\r\n    respOpcao = menu_ingrediente();\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ingrediente.c b/ingrediente.c
+--- a/ingrediente.c	(revision bf1dcda84f383eae2ef888124101d428cbee10a6)
++++ b/ingrediente.c	(date 1733175362623)
+@@ -77,14 +77,15 @@
+ int menu_ingrediente() {
+     int NumeroOperaçãoingrediente = 0;
+     printf("\n");
+-    printf("*******************************|\n");
+-    printf("INGREDIENTE(s):                |\n");
+-    printf("*******************************|\n");
+-    printf(" 1 - Adicionar Ingrediente(s)  |\n");
+-    printf(" 2 - Visualizar Ingrediente(s) |\n");
+-    printf(" 3 - Editar Ingrediente(s)     |\n");
+-    printf(" 4 - Remover Ingrediente(s)    |\n");
+-    printf("*******************************|\n");
++    printf("********************************|\n");
++    printf("INGREDIENTE(s):                 |\n");
++    printf("********************************|\n");
++    printf(" 1 - Adicionar Ingrediente(s)   |\n");
++    printf(" 2 - Visualizar Ingrediente(s)  |\n");
++    printf(" 3 - Editar Ingrediente(s)      |\n");
++    printf(" 4 - Remover Ingrediente(s)     |\n");
++    printf(" 0 - Fechar CRUD_INGREDIENTE(s) |\n");
++    printf("********************************|\n");
+     scanf("%d",&NumeroOperaçãoingrediente);
+     if (!(NumeroOperaçãoingrediente == 1 || NumeroOperaçãoingrediente == 2 || NumeroOperaçãoingrediente == 3|| NumeroOperaçãoingrediente == 4)) {
+         NumeroOperaçãoingrediente = 0;
+@@ -95,7 +96,4 @@
+ 
+ 
+ 
+-void CRUD_INGREDIENTE() {
+-    int respOpcao=0;
+-    respOpcao = menu_ingrediente();
+-}
++
+Index: ingrediente.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\n#ifndef INGREDIENTE_H\r\n#define INGREDIENTE_H\r\n\r\n#include <stdio.h>\r\n#include <ctype.h>\r\n#include <string.h>\r\n#include <stdlib.h>\r\n\r\n\r\ntypedef struct Ingrediente {\r\n    int id;\r\n    char nome[20];\r\n    float preco;\r\n}Ingrediente;\r\n\r\nIngrediente* adicionar_ingrediente_CRUD(int *qnt);\r\nvoid visualizar_ingrediente_CRUD();\r\nvoid editar_ingrediente_CRUD();\r\nvoid remover_ingrediente_CRUD();\r\n\r\nvoid CRUD_INGREDIENTE();\r\n\r\n\r\n\r\n#endif //INGREDIENTE_H
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ingrediente.h b/ingrediente.h
+--- a/ingrediente.h	(revision bf1dcda84f383eae2ef888124101d428cbee10a6)
++++ b/ingrediente.h	(date 1733173184094)
+@@ -15,11 +15,14 @@
+ }Ingrediente;
+ 
+ Ingrediente* adicionar_ingrediente_CRUD(int *qnt);
+-void visualizar_ingrediente_CRUD();
+-void editar_ingrediente_CRUD();
++void visualizar_ingrediente_CRUD(Ingrediente *ingrediente, int qnt);
++void editar_ingrediente_CRUD(Ingrediente *ingrediente, int qnt);
+ void remover_ingrediente_CRUD();
+ 
+-void CRUD_INGREDIENTE();
++int menu_ingrediente();
++
++
++void CRUD_INGREDIENTE(int *qtd);
+ 
+ 
+ 
+Index: basics.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#ifndef BASICS_H\r\n#define BASICS_H\r\n\r\n#include <stdio.h>\r\n#include <ctype.h>\r\n#include <string.h>\r\n#include <stdlib.h>\r\n\r\n\r\nvoid venda_pizza();\r\nvoid venda_pizza_cardapio();\r\nvoid venda_pizza_adiciona_ingrediente();\r\n\r\n\r\nvoid salvar_cardapio_pizza();\r\nvoid salvar_cardapio_ingedientes();\r\n\r\nvoid ler_cardapio_pizza();\r\nvoid ler_cardapio_ingedientes();\r\n\r\nvoid VENDA();\r\n\r\n\r\nint menu_principal();\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n#endif //BASICS_H\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/basics.h b/basics.h
+--- a/basics.h	(revision bf1dcda84f383eae2ef888124101d428cbee10a6)
++++ b/basics.h	(date 1733173184041)
+@@ -18,18 +18,13 @@
+ void ler_cardapio_pizza();
+ void ler_cardapio_ingedientes();
+ 
+-void VENDA();
++
+ 
+ 
+ int menu_principal();
+-
+-
+-
+-
+-
+-
+-
+-
++void CRUD_PIZZA();
++void CRUD_INGREDIENTE();
++void VENDA();
+ 
+ 
+ 
+Index: pizza.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#include \"pizza.h\"\r\n\r\n//crud pizza\r\nvoid adicionar_pizza_CRUD(){}\r\nvoid visualizar_pizza_CRUD(){}\r\nvoid editar_pizza_CRUD(){}\r\nvoid remover_pizza_CRUD(){}\r\n\r\n\r\nint menu_pizza() {\r\n    int NumeroOperaçãoPizza=0;\r\n    printf(\"\\n\");\r\n    printf(\"*****************************|\\n\");\r\n    printf(\"PIZZA(s):                    |\\n\");\r\n    printf(\"*****************************|\\n\");\r\n    printf(\" 1 - Adicionar Pizza         |\\n\");\r\n    printf(\" 2 - Visualizar Pizzas       |\\n\");\r\n    printf(\" 3 - Editar Pizza            |\\n\");\r\n    printf(\" 4 - Remover Pizza           |\\n\");\r\n    printf(\"*****************************|\\n\");\r\n    scanf(\"%d\",&NumeroOperaçãoPizza);\r\n    if (!(NumeroOperaçãoPizza == 1 || NumeroOperaçãoPizza == 2 || NumeroOperaçãoPizza == 3|| NumeroOperaçãoPizza == 4)) {\r\n        NumeroOperaçãoPizza = 0;\r\n    }\r\n    return NumeroOperaçãoPizza;\r\n}\r\n\r\n\r\n\r\n\r\nvoid CRUD_PIZZA() {\r\n    int respOpcao=0;\r\n    respOpcao = menu_pizza(); // arrumar, ta errado\r\n    while(!(respOpcao== 1 ||respOpcao== 2\r\n        || respOpcao== 3|| respOpcao== 4)) {\r\n        switch(respOpcao) {\r\n            case 1:\r\n                break;\r\n            case 2:\r\n                break;\r\n            case 3:\r\n                break;\r\n            case 4:\r\n                break;\r\n            default:\r\n                break;\r\n        }\r\n        respOpcao = menu_pizza();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pizza.c b/pizza.c
+--- a/pizza.c	(revision bf1dcda84f383eae2ef888124101d428cbee10a6)
++++ b/pizza.c	(date 1733172257556)
+@@ -28,23 +28,4 @@
+ 
+ 
+ 
+-void CRUD_PIZZA() {
+-    int respOpcao=0;
+-    respOpcao = menu_pizza(); // arrumar, ta errado
+-    while(!(respOpcao== 1 ||respOpcao== 2
+-        || respOpcao== 3|| respOpcao== 4)) {
+-        switch(respOpcao) {
+-            case 1:
+-                break;
+-            case 2:
+-                break;
+-            case 3:
+-                break;
+-            case 4:
+-                break;
+-            default:
+-                break;
+-        }
+-        respOpcao = menu_pizza();
+-    }
+-}
++
+Index: pizza.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\n#ifndef PIZZA_H\r\n#define PIZZA_H\r\n\r\n#include <stdio.h>\r\n#include <ctype.h>\r\n#include <string.h>\r\n#include <stdlib.h>\r\n\r\ntypedef struct pizza{\r\n    int Id;\r\n    char Nome[30];\r\n    char Tamanho;//P,M,G\r\n    float Preco;\r\n    char Ingredientes[50];//Array com os ingredientes padrão da pizza\r\n}pizza;\r\n\r\nvoid adicionar_pizza_CRUD();\r\nvoid visualizar_pizza_CRUD();\r\nvoid editar_pizza_CRUD();\r\nvoid remover_pizza_CRUD();\r\n\r\nvoid CRUD_PIZZA();\r\n\r\n\r\n\r\n#endif //PIZZA_H
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pizza.h b/pizza.h
+--- a/pizza.h	(revision bf1dcda84f383eae2ef888124101d428cbee10a6)
++++ b/pizza.h	(date 1733173184063)
+@@ -20,7 +20,8 @@
+ void editar_pizza_CRUD();
+ void remover_pizza_CRUD();
+ 
+-void CRUD_PIZZA();
++
++int menu_pizza();
+ 
+ 
+ 
+Index: cmake-build-debug/.ninja_log
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># ninja log v6\r\n85\t705\t7547219975815415\tCMakeFiles/TrabalhoPraticoAEDs1.dir/ingrediente.c.obj\t419ee00485db0802\r\n135\t746\t7547219976317707\tCMakeFiles/TrabalhoPraticoAEDs1.dir/basics.c.obj\t94586e1b2f9f1ff3\r\n12\t267\t7547220203564042\tCMakeFiles/TrabalhoPraticoAEDs1.dir/main.c.obj\tdeeccfce694f8f98\r\n34\t292\t7547220203786342\tCMakeFiles/TrabalhoPraticoAEDs1.dir/pizza.c.obj\t9efe0872416e54a\r\n293\t782\t7547220206370185\tTrabalhoPraticoAEDs1.exe\t8959a035b80d0f4a\r\n10\t274\t7547220305825913\tCMakeFiles/TrabalhoPraticoAEDs1.dir/main.c.obj\tdeeccfce694f8f98\r\n275\t697\t7547220308481347\tTrabalhoPraticoAEDs1.exe\t8959a035b80d0f4a\r\n14\t242\t7547220891125229\tCMakeFiles/TrabalhoPraticoAEDs1.dir/main.c.obj\tdeeccfce694f8f98\r\n246\t575\t7547220893432305\tTrabalhoPraticoAEDs1.exe\t8959a035b80d0f4a\r\n21\t305\t7547221308776692\tCMakeFiles/TrabalhoPraticoAEDs1.dir/basics.c.obj\t94586e1b2f9f1ff3\r\n306\t643\t7547221311618083\tTrabalhoPraticoAEDs1.exe\t8959a035b80d0f4a\r\n12\t229\t7547221793543335\tCMakeFiles/TrabalhoPraticoAEDs1.dir/basics.c.obj\t94586e1b2f9f1ff3\r\n230\t571\t7547221795720758\tTrabalhoPraticoAEDs1.exe\t8959a035b80d0f4a\r\n22\t379\t7547222420982903\tCMakeFiles/TrabalhoPraticoAEDs1.dir/basics.c.obj\t94586e1b2f9f1ff3\r\n380\t791\t7547222424572903\tTrabalhoPraticoAEDs1.exe\t8959a035b80d0f4a\r\n21\t388\t7547222534524602\tCMakeFiles/TrabalhoPraticoAEDs1.dir/basics.c.obj\t94586e1b2f9f1ff3\r\n389\t798\t7547222538206671\tTrabalhoPraticoAEDs1.exe\t8959a035b80d0f4a\r\n20\t405\t7547223033747167\tCMakeFiles/TrabalhoPraticoAEDs1.dir/basics.c.obj\t94586e1b2f9f1ff3\r\n406\t856\t7547223037612943\tTrabalhoPraticoAEDs1.exe\t8959a035b80d0f4a\r\n24\t467\t7547223365353693\tCMakeFiles/TrabalhoPraticoAEDs1.dir/basics.c.obj\t94586e1b2f9f1ff3\r\n468\t932\t7547223369813862\tTrabalhoPraticoAEDs1.exe\t8959a035b80d0f4a\r\n21\t405\t7547223576165878\tCMakeFiles/TrabalhoPraticoAEDs1.dir/basics.c.obj\t94586e1b2f9f1ff3\r\n406\t842\t7547223580015710\tTrabalhoPraticoAEDs1.exe\t8959a035b80d0f4a\r\n146\t1522\t7548731360035535\tCMakeFiles/TrabalhoPraticoAEDs1.dir/main.c.obj\tdeeccfce694f8f98\r\n201\t1558\t7548731360587866\tCMakeFiles/TrabalhoPraticoAEDs1.dir/pizza.c.obj\t9efe0872416e54a\r\n20\t532\t7548734658967803\tCMakeFiles/TrabalhoPraticoAEDs1.dir/main.c.obj\tdeeccfce694f8f98\r\n51\t650\t7548734659275395\tCMakeFiles/TrabalhoPraticoAEDs1.dir/ingrediente.c.obj\t419ee00485db0802\r\n651\t1541\t7548734665269739\tTrabalhoPraticoAEDs1.exe\t8959a035b80d0f4a\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/cmake-build-debug/.ninja_log b/cmake-build-debug/.ninja_log
+--- a/cmake-build-debug/.ninja_log	(revision bf1dcda84f383eae2ef888124101d428cbee10a6)
++++ b/cmake-build-debug/.ninja_log	(date 1733175363810)
+@@ -27,3 +27,8 @@
+ 20	532	7548734658967803	CMakeFiles/TrabalhoPraticoAEDs1.dir/main.c.obj	deeccfce694f8f98
+ 51	650	7548734659275395	CMakeFiles/TrabalhoPraticoAEDs1.dir/ingrediente.c.obj	419ee00485db0802
+ 651	1541	7548734665269739	TrabalhoPraticoAEDs1.exe	8959a035b80d0f4a
++16	423	7548785628510539	CMakeFiles/TrabalhoPraticoAEDs1.dir/main.c.obj	deeccfce694f8f98
++42	439	7548785628766366	CMakeFiles/TrabalhoPraticoAEDs1.dir/pizza.c.obj	9efe0872416e54a
++67	518	7548785629018057	CMakeFiles/TrabalhoPraticoAEDs1.dir/ingrediente.c.obj	419ee00485db0802
++89	547	7548785629249918	CMakeFiles/TrabalhoPraticoAEDs1.dir/basics.c.obj	94586e1b2f9f1ff3
++547	976	7548785633820611	TrabalhoPraticoAEDs1.exe	8959a035b80d0f4a
+Index: cmake-build-debug/Testing/Temporary/LastTest.log
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>Start testing: Dec 02 17:11 Hora oficial do Brasil\r\n----------------------------------------------------------\r\nEnd testing: Dec 02 17:11 Hora oficial do Brasil\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/cmake-build-debug/Testing/Temporary/LastTest.log b/cmake-build-debug/Testing/Temporary/LastTest.log
+--- a/cmake-build-debug/Testing/Temporary/LastTest.log	(revision bf1dcda84f383eae2ef888124101d428cbee10a6)
++++ b/cmake-build-debug/Testing/Temporary/LastTest.log	(date 1733175364499)
+@@ -1,3 +1,3 @@
+-Start testing: Dec 02 17:11 Hora oficial do Brasil
++Start testing: Dec 02 18:36 Hora oficial do Brasil
+ ----------------------------------------------------------
+-End testing: Dec 02 17:11 Hora oficial do Brasil
++End testing: Dec 02 18:36 Hora oficial do Brasil
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"CMakePresetLoader\">{\r\n  &quot;useNewFormat&quot;: true\r\n}</component>\r\n  <component name=\"CMakeReloadState\">\r\n    <option name=\"reloaded\" value=\"true\" />\r\n  </component>\r\n  <component name=\"CMakeRunConfigurationManager\">\r\n    <generated>\r\n      <config projectName=\"TrabalhoPraticoAEDs1\" targetName=\"TrabalhoPraticoAEDs1\" />\r\n    </generated>\r\n  </component>\r\n  <component name=\"CMakeSettings\">\r\n    <configurations>\r\n      <configuration PROFILE_NAME=\"Debug\" ENABLED=\"true\" CONFIG_NAME=\"Debug\" />\r\n    </configurations>\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"b6162155-5516-41e9-893f-46039027e6c8\" name=\"Changes\" comment=\"arrumadno estrutura\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/cmake-build-debug/.ninja_deps\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/cmake-build-debug/.ninja_deps\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/cmake-build-debug/.ninja_log\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/cmake-build-debug/.ninja_log\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/ingrediente.c\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/ingrediente.c\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/ingrediente.h\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/ingrediente.h\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ChangesViewManager\">\r\n    <option name=\"groupingKeys\">\r\n      <option value=\"directory\" />\r\n    </option>\r\n  </component>\r\n  <component name=\"ClangdSettings\">\r\n    <option name=\"formatViaClangd\" value=\"false\" />\r\n  </component>\r\n  <component name=\"ExecutionTargetManager\" SELECTED_TARGET=\"CMakeBuildProfile:Debug\" />\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;PauloHM65&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/PauloHM65/TrabPraticoAEDS.git&quot;,\r\n    &quot;accountId&quot;: &quot;e0cb153f-0f42-4708-83a2-182235e6b83a&quot;\r\n  }\r\n}</component>\r\n  <component name=\"HighlightingSettingsPerFile\">\r\n    <setting file=\"file://$APPLICATION_HOME_DIR$/bin/mingw/x86_64-w64-mingw32/include/ctype.h\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"mock://C:/Users/paulo/OneDrive/Área de Trabalho/TrabalhoPraticoAEDs1/ingrediente.c\" root0=\"SKIP_HIGHLIGHTING\" />\r\n    <setting file=\"mock://C:/Users/paulo/OneDrive/Área de Trabalho/TrabalhoPraticoAEDs1/ingrediente.c\" root0=\"SKIP_HIGHLIGHTING\" />\r\n  </component>\r\n  <component name=\"ProjectApplicationVersion\">\r\n    <option name=\"ide\" value=\"CLion\" />\r\n    <option name=\"majorVersion\" value=\"2024\" />\r\n    <option name=\"minorVersion\" value=\"1.4\" />\r\n    <option name=\"productBranch\" value=\"Classic\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 7\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2parA8VKCBes6lT5WrLoJyz7Sm6\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;CMake Application.TrabalhoPraticoAEDs1.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,\r\n    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,\r\n    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"TrabalhoPraticoAEDs1\" type=\"CMakeRunConfiguration\" factoryName=\"Application\" REDIRECT_INPUT=\"false\" ELEVATE=\"false\" USE_EXTERNAL_CONSOLE=\"false\" EMULATE_TERMINAL=\"false\" PASS_PARENT_ENVS_2=\"true\" PROJECT_NAME=\"TrabalhoPraticoAEDs1\" TARGET_NAME=\"TrabalhoPraticoAEDs1\" CONFIG_NAME=\"Debug\" RUN_TARGET_PROJECT_NAME=\"TrabalhoPraticoAEDs1\" RUN_TARGET_NAME=\"TrabalhoPraticoAEDs1\">\r\n      <method v=\"2\">\r\n        <option name=\"com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"CMakeRunConfiguration\" factoryName=\"Application\" REDIRECT_INPUT=\"false\" ELEVATE=\"false\" USE_EXTERNAL_CONSOLE=\"false\" EMULATE_TERMINAL=\"false\" PASS_PARENT_ENVS_2=\"true\">\r\n      <method v=\"2\">\r\n        <option name=\"com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"b6162155-5516-41e9-893f-46039027e6c8\" name=\"Changes\" comment=\"\" />\r\n      <created>1733014880927</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1733014880927</updated>\r\n      <workItem from=\"1733014883158\" duration=\"6871000\" />\r\n      <workItem from=\"1733166976544\" duration=\"3121000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"first\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733014944612</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733014944612</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"first\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733015021926</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733015021926</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"arrumadno estrutura\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733016524186</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733016524186</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"arrumadno estrutura\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733017607638</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733017607638</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"arrumadno estrutura\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733017643963</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733017643963</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"arrumadno estrutura\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733020583625</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733020583625</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"arrumadno estrutura\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733020618326</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733020618326</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"arrumadno estrutura\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733020778566</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733020778566</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"arrumadno estrutura\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733021399986</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733021399987</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"arrumadno estrutura\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733022541627</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733022541627</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"arrumadno estrutura\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1733022570143</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1733022570143</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"12\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VCPKGProject\">\r\n    <isAutomaticCheckingOnLaunch value=\"false\" />\r\n    <isAutomaticFoundErrors value=\"true\" />\r\n    <isAutomaticReloadCMake value=\"true\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"master\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"first\" />\r\n    <MESSAGE value=\"arrumadno estrutura\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"arrumadno estrutura\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision bf1dcda84f383eae2ef888124101d428cbee10a6)
++++ b/.idea/workspace.xml	(date 1733181967450)
+@@ -20,13 +20,22 @@
+     </configurations>
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="b6162155-5516-41e9-893f-46039027e6c8" name="Changes" comment="arrumadno estrutura">
++    <list default="true" id="b6162155-5516-41e9-893f-46039027e6c8" name="Changes" comment="arruamdno ingrediente">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/basics.c" beforeDir="false" afterPath="$PROJECT_DIR$/basics.c" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/basics.h" beforeDir="false" afterPath="$PROJECT_DIR$/basics.h" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/ingrediente.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/ingrediente.c.obj" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/main.c.obj" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/pizza.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/pizza.c.obj" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TrabalhoPraticoAEDs1.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/TrabalhoPraticoAEDs1.exe" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/ingrediente.c" beforeDir="false" afterPath="$PROJECT_DIR$/ingrediente.c" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/ingrediente.h" beforeDir="false" afterPath="$PROJECT_DIR$/ingrediente.h" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/pizza.c" beforeDir="false" afterPath="$PROJECT_DIR$/pizza.c" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/pizza.h" beforeDir="false" afterPath="$PROJECT_DIR$/pizza.h" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -76,25 +85,25 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;CMake Application.TrabalhoPraticoAEDs1.executor&quot;: &quot;Run&quot;,
+-    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "CMake Application.TrabalhoPraticoAEDs1.executor": "Debug",
++    "RunOnceActivity.RadMigrateCodeStyle": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "RunOnceActivity.cidr.known.project.marker": "true",
++    "RunOnceActivity.readMode.enableVisualFormatting": "true",
++    "cf.first.check.clang-format": "false",
++    "cidr.known.project.marker": "true",
++    "git-widget-placeholder": "master",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "settings.editor.selected.configurable": "vcs.Git",
++    "vue.rearranger.settings.migration": "true"
+   }
+-}</component>
++}]]></component>
+   <component name="RunManager">
+     <configuration name="TrabalhoPraticoAEDs1" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TrabalhoPraticoAEDs1" TARGET_NAME="TrabalhoPraticoAEDs1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="TrabalhoPraticoAEDs1" RUN_TARGET_NAME="TrabalhoPraticoAEDs1">
+       <method v="2">
+@@ -116,7 +125,7 @@
+       <option name="presentableId" value="Default" />
+       <updated>1733014880927</updated>
+       <workItem from="1733014883158" duration="6871000" />
+-      <workItem from="1733166976544" duration="3121000" />
++      <workItem from="1733166976544" duration="14693000" />
+     </task>
+     <task id="LOCAL-00001" summary="first">
+       <option name="closed" value="true" />
+@@ -206,7 +215,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1733022570143</updated>
+     </task>
+-    <option name="localTasksCounter" value="12" />
++    <task id="LOCAL-00012" summary="arruamdno ingrediente">
++      <option name="closed" value="true" />
++      <created>1733170355762</created>
++      <option name="number" value="00012" />
++      <option name="presentableId" value="LOCAL-00012" />
++      <option name="project" value="LOCAL" />
++      <updated>1733170355762</updated>
++    </task>
++    <option name="localTasksCounter" value="13" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -243,6 +260,7 @@
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="first" />
+     <MESSAGE value="arrumadno estrutura" />
+-    <option name="LAST_COMMIT_MESSAGE" value="arrumadno estrutura" />
++    <MESSAGE value="arruamdno ingrediente" />
++    <option name="LAST_COMMIT_MESSAGE" value="arruamdno ingrediente" />
+   </component>
+ </project>
+\ No newline at end of file

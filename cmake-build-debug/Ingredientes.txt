@@ -1,0 +1,6 @@
+1;molho de tomate;22.00
+55;cacau;5.75
+66;M&M;12.12
+61;chocolate;17.05
+44;Alho;6.78
+99;molho o o o ;99.99

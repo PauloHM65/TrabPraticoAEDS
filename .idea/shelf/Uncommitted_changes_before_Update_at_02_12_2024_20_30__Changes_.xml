@@ -1,0 +1,29 @@
+<changelist name="Uncommitted_changes_before_Update_at_02_12_2024_20_30_[Changes]" date="1733182264146" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_12_2024_20_30_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 02/12/2024 20:30 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/main.c.obj" />
+    <option name="AFTER_PATH" value="cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/main.c.obj" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_12_2024_20_30_[Changes]/main.c.obj" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/pizza.c.obj" />
+    <option name="AFTER_PATH" value="cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/pizza.c.obj" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_12_2024_20_30_[Changes]/pizza.c.obj" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/ingrediente.c.obj" />
+    <option name="AFTER_PATH" value="cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/ingrediente.c.obj" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_12_2024_20_30_[Changes]/ingrediente.c.obj" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="cmake-build-debug/.ninja_deps" />
+    <option name="AFTER_PATH" value="cmake-build-debug/.ninja_deps" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_12_2024_20_30_[Changes]/.ninja_deps" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="cmake-build-debug/TrabalhoPraticoAEDs1.exe" />
+    <option name="AFTER_PATH" value="cmake-build-debug/TrabalhoPraticoAEDs1.exe" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_12_2024_20_30_[Changes]/TrabalhoPraticoAEDs1.exe" />
+  </binary>
+</changelist>
