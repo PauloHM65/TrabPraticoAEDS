@@ -20,23 +20,21 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6162155-5516-41e9-893f-46039027e6c8" name="Changes" comment="arruamdno ingrediente">
+    <list default="true" id="b6162155-5516-41e9-893f-46039027e6c8" name="Changes" comment="arrumando teste, falta o remover">
+      <change afterPath="$PROJECT_DIR$/venda.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venda.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/basics.c" beforeDir="false" afterPath="$PROJECT_DIR$/basics.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/basics.h" beforeDir="false" afterPath="$PROJECT_DIR$/basics.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-38d4e206264b3b32639b.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2024-12-01T01-20-09-0517.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-TrabalhoPraticoAEDs1-Debug-9dfee2353323b7f1fbb6.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/basics.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/basics.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/ingrediente.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/ingrediente.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/main.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/pizza.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/pizza.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TrabalhoPraticoAEDs1.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/TrabalhoPraticoAEDs1.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ingrediente.c" beforeDir="false" afterPath="$PROJECT_DIR$/ingrediente.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ingrediente.h" beforeDir="false" afterPath="$PROJECT_DIR$/ingrediente.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pizza.c" beforeDir="false" afterPath="$PROJECT_DIR$/pizza.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pizza.h" beforeDir="false" afterPath="$PROJECT_DIR$/pizza.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +101,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "vcs.Git",
+    "settings.editor.selected.configurable": "configurable.group.build",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -128,7 +126,7 @@
       <option name="presentableId" value="Default" />
       <updated>1733014880927</updated>
       <workItem from="1733014883158" duration="6871000" />
-      <workItem from="1733166976544" duration="25349000" />
+      <workItem from="1733166976544" duration="27720000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <option name="closed" value="true" />
@@ -226,7 +224,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733170355762</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="arrumando teste, falta o remover">
+      <option name="closed" value="true" />
+      <created>1733192730824</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1733192730824</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,6 +270,18 @@
     <MESSAGE value="first" />
     <MESSAGE value="arrumadno estrutura" />
     <MESSAGE value="arruamdno ingrediente" />
-    <option name="LAST_COMMIT_MESSAGE" value="arruamdno ingrediente" />
+    <MESSAGE value="arrumando teste, falta o remover" />
+    <option name="LAST_COMMIT_MESSAGE" value="arrumando teste, falta o remover" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/basics.c</url>
+          <line>39</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

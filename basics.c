@@ -1,17 +1,11 @@
 #include "pizza.h"
 #include "ingrediente.h"
+#include "venda.h"
 #include "basics.h"
-
-//vender pizza
-int menu_venda(){}
-void venda_pizza(){}
-void venda_pizza_cardapio(){}
-void venda_pizza_adiciona_ingrediente(){}
-/*O preço final da pizza deve incluir o valor base mais o custo de
-qualquer ingrediente extra.*/
 
 
 //Exportar e Importar Dados
+
 //exportação
 void salvar_cardapio_pizza(){}
 void salvar_cardapio_ingedientes(){}
@@ -41,12 +35,34 @@ int menu_principal() {
     }
     return NumeroOperação;
 }
+// so adicionei o while e a tela
+
 void CRUD_PIZZA() {
     int respPizza =0;
     do {
-        respPizza =menu_pizza();
-    }while(respPizza==0);
+        respPizza = menu_pizza();
+        switch(respPizza) {
+            case 1:
+
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            case 4:
+
+                break;
+            case 0:
+                printf(" --> CRUD_PIZZA encerrando!!<--\n");
+            break;
+            default:
+                printf("Opcao invalida!! Tente novamente");
+        }
+    }while(respPizza != 0);
 }
+// 03/12 - Falta arruma o remover
 void CRUD_INGREDIENTE(int *qtd) {
     int respIngrediente =0;
     do {
@@ -73,9 +89,26 @@ void CRUD_INGREDIENTE(int *qtd) {
     }while(respIngrediente != 0);
 
 }
+// so adicionei o while e a tela
 void VENDA() {
     int respVenda =0;
     do {
         respVenda = menu_venda();
-    }while(respVenda==0);
+        switch(respVenda) {
+            case 1:
+                venda_pizza();
+            break;
+            case 2:
+                venda_pizza_cardapio();
+            break;
+            case 3:
+                venda_pizza_adiciona_ingrediente();
+            break;
+            case 0:
+                printf(" --> VENDA encerrando!!<--\n");
+            break;
+            default:
+                printf("Opcao invalida!! Tente novamente");
+        }
+    }while(respVenda != 0);
 }

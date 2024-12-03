@@ -17,11 +17,10 @@ int menu_pizza() {
     printf(" 2 - Visualizar Pizzas       |\n");
     printf(" 3 - Editar Pizza            |\n");
     printf(" 4 - Remover Pizza           |\n");
+    printf(" 0 - Encerrar PIZZA(s)       |\n");
     printf("*****************************|\n");
     scanf("%d",&NumeroOperaçãoPizza);
-    if (!(NumeroOperaçãoPizza == 1 || NumeroOperaçãoPizza == 2 || NumeroOperaçãoPizza == 3|| NumeroOperaçãoPizza == 4)) {
-        NumeroOperaçãoPizza = 0;
-    }
+
     return NumeroOperaçãoPizza;
 }
 

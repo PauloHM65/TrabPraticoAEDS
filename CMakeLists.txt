@@ -9,4 +9,6 @@ add_executable(TrabalhoPraticoAEDs1 main.c
         ingrediente.c
         ingrediente.h
         basics.c
-        basics.h)
+        basics.h
+        venda.c
+        venda.h)

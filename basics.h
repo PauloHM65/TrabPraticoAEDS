@@ -7,11 +7,6 @@
 #include <stdlib.h>
 
 
-void venda_pizza();
-void venda_pizza_cardapio();
-void venda_pizza_adiciona_ingrediente();
-
-
 void salvar_cardapio_pizza();
 void salvar_cardapio_ingedientes();
 
