@@ -12,7 +12,7 @@ typedef struct pizza{
     char Nome[30];
     char Tamanho;//P,M,G
     float Preco;
-    char Ingredientes[50];//Array com os ingredientes padrão da pizza
+    Ingredientes ingredientes[50];//Array com os ingredientes padrão da pizza
 }pizza;
 
 void adicionar_pizza_CRUD();
