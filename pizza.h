@@ -20,7 +20,8 @@ void visualizar_pizza_CRUD();
 void editar_pizza_CRUD();
 void remover_pizza_CRUD();
 
-void CRUD_PIZZA();
+
+int menu_pizza();
 
 
 

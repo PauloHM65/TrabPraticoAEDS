@@ -1,14 +1,14 @@
 #include "ingrediente.h"
 
-Ingredientes *adicionar_ingrediente_CRUD(int *qnt)
+void adicionar_ingrediente_CRUD(int *qnt)
 {
-    Ingredientes *ingrediente = NULL;
+    Ingredientes *ingrediente = (Ingredientes*)malloc( sizeof(Ingredientes));
     char continuar;
     FILE *arquivo = fopen("Ingredientes.txt", "a");
 
     do
     {
-        ingrediente = realloc(ingrediente, (*qnt + 1) * sizeof(Ingredientes));
+
 
         printf("Digite o ID do Ingrediente: ");
         scanf("%d", &ingrediente[*qnt].id);
@@ -19,7 +19,7 @@ Ingredientes *adicionar_ingrediente_CRUD(int *qnt)
         ingrediente[*qnt].nome[strcspn(ingrediente[*qnt].nome, "\n")] = '\0';
 
         printf("Digite o preço do Ingrediente: ");
-        scanf("%f", &ingrediente[*qnt].preco);
+        scanf("%f", &ingrediente[*qnt].preco);getchar();
 
         fprintf(arquivo, "%d;%s;%.2f\n", ingrediente[*qnt].id, ingrediente[*qnt].nome, ingrediente[*qnt].preco);
 
@@ -28,9 +28,8 @@ Ingredientes *adicionar_ingrediente_CRUD(int *qnt)
         printf("Gostaria de adicionar mais um Ingrediente? ");
         scanf(" %c", &continuar);
     } while (continuar == 'S' || continuar == 's');
-
+    free(ingrediente);
     fclose(arquivo);
-    return ingrediente;
 }
 void visualizar_ingrediente_CRUD()
 {
@@ -69,7 +68,7 @@ void visualizar_ingrediente_CRUD()
 
 void atualizar_ingredientes(Ingredientes *ingrediente, int qnt)
 {
-    FILE *arquivo = fopen("Ingredientes.txt", "w+");
+    FILE *arquivo = fopen("Ingredientes.txt", "w");
     if (arquivo == NULL)
     {
         printf("Erro ao abrir o arquivo para salvar os ingredientes.\n");
@@ -84,24 +83,36 @@ void atualizar_ingredientes(Ingredientes *ingrediente, int qnt)
     fclose(arquivo);
 }
 
-void editar_ingrediente_CRUD(Ingredientes *ingrediente, int qnt)
+void editar_ingrediente_CRUD( int *qnt)
 {
-    char alteracao[10], novo_nome[30];
-    int id_alteracao, posicao_alteracao;
-    float novo_preco = 0.0;
-    // FILE *arquivo = fopen("Ingredientes.txt", "a");
+    char alteracao[10], novo_nome[30],nome[30],linha[100];
+    int id_alteracao, posicao_alteracao=-1,id = 0;;
+    float novo_preco = 0.0,preco = 0.0;
+    FILE *arquivo = fopen("Ingredientes.txt", "r");
+    Ingredientes* ingrediente =NULL;
+    ingrediente = (Ingredientes*)realloc(ingrediente, (*qnt)*sizeof(Ingredientes));
+
 
     visualizar_ingrediente_CRUD();
     printf("Digite o ID do Ingrediente a ser alterado: \n");
-    scanf("%d", &id_alteracao);
+    scanf("%d", &id_alteracao); //55
     getchar();
 
-    for (int i = 0; i < qnt; i++)
+    for (int i =0 ; i < *qnt; i++)
     {
-        if (ingrediente[i].id == id_alteracao)
+        fgets(linha, 100, arquivo);
+        if (sscanf(linha, "%d;%29[^;];%f", &id, nome, &preco) == 3)
         {
-            posicao_alteracao = i;
+
+            ingrediente[i].id = id;
+            ingrediente[i].preco = preco;
+            strcpy(ingrediente[i].nome,nome);
+            if (ingrediente[i].id == id_alteracao)
+            {
+                posicao_alteracao = i;
+            }
         }
+
     }
 
     if (posicao_alteracao < 0)
@@ -109,8 +120,7 @@ void editar_ingrediente_CRUD(Ingredientes *ingrediente, int qnt)
         printf("Ingrediente com ID %d não encontrado.\n", id_alteracao);
         return;
     }
-    else
-    {
+
 
         printf("O que gostaria de alterar(Nome ou Preco)?: \n");
         fgets(alteracao, 10, stdin);
@@ -130,36 +140,68 @@ void editar_ingrediente_CRUD(Ingredientes *ingrediente, int qnt)
             getchar();
             ingrediente[posicao_alteracao].preco = novo_preco;
         }    
-    }
-    atualizar_ingredientes(ingrediente, qnt);
+
+    printf("%s - %f",ingrediente[posicao_alteracao].nome,ingrediente[posicao_alteracao].preco);
+
+    atualizar_ingredientes(ingrediente, *qnt);
+    free(ingrediente);
 }
 
-void remover_ingrediente_CRUD()
+void remover_ingrediente_CRUD(Ingredientes *ingrediente, int *qtd)
 {
+    FILE *arquivo = fopen("Ingredientes.txt", "a");
+
+    if (arquivo == NULL)
+    {
+        printf("Erro ao abrir o arquivo\n");
+    }
+    int id_para_remover=0,posicao_para_remover=0,tamanhoArquivo = *qtd;
+    char linha[100];
+    Ingredientes *ingredienteAux = NULL;
+
+    visualizar_ingrediente_CRUD();
+    printf("Digete o ID do item a ser removido:\n");
+    scanf("%d",id_para_remover);getchar();
+
+    for (int i = 1; i <= tamanhoArquivo; i++)
+    {
+        printf("%d ",i);
+        if (ingrediente[i].id == id_para_remover)
+        {
+
+            posicao_para_remover = i;printf("%d ",posicao_para_remover);
+
+        }
+    }
+
+    fscanf(arquivo,"%d;%s;%f",ingredienteAux[*qtd].id,ingredienteAux[*qtd].nome,ingredienteAux[*qtd].preco);
+    printf("%d;%s;%f",ingredienteAux[*qtd].id,ingredienteAux[*qtd].nome,ingredienteAux[*qtd].preco);
+
+
+
+    (*qtd)--;
+    atualizar_ingredientes(ingrediente, *qtd);
+
 }
 
 int menu_ingrediente() {
     int NumeroOperaçãoingrediente = 0;
     printf("\n");
-    printf("*******************************|\n");
-    printf("INGREDIENTE(s):                |\n");
-    printf("*******************************|\n");
-    printf(" 1 - Adicionar Ingrediente(s)  |\n");
-    printf(" 2 - Visualizar Ingrediente(s) |\n");
-    printf(" 3 - Editar Ingrediente(s)     |\n");
-    printf(" 4 - Remover Ingrediente(s)    |\n");
-    printf("*******************************|\n");
+    printf("********************************|\n");
+    printf("INGREDIENTE(s):                 |\n");
+    printf("********************************|\n");
+    printf(" 1 - Adicionar Ingrediente(s)   |\n");
+    printf(" 2 - Visualizar Ingrediente(s)  |\n");
+    printf(" 3 - Editar Ingrediente(s)      |\n");
+    printf(" 4 - Remover Ingrediente(s)     |\n");
+    printf(" 0 - Fechar CRUD_INGREDIENTE(s) |\n");
+    printf("********************************|\n");
     scanf("%d",&NumeroOperaçãoingrediente);
-    if (!(NumeroOperaçãoingrediente == 1 || NumeroOperaçãoingrediente == 2 || NumeroOperaçãoingrediente == 3|| NumeroOperaçãoingrediente == 4)) {
-        NumeroOperaçãoingrediente = 0;
-    }
+
     return NumeroOperaçãoingrediente;
 }
 
 
 
 
-void CRUD_INGREDIENTE() {
-    int respOpcao=0;
-    respOpcao = menu_ingrediente();
-}
+

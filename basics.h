@@ -18,18 +18,13 @@ void salvar_cardapio_ingedientes();
 void ler_cardapio_pizza();
 void ler_cardapio_ingedientes();
 
-void VENDA();
+
 
 
 int menu_principal();
-
-
-
-
-
-
-
-
+void CRUD_PIZZA();
+void CRUD_INGREDIENTE();
+void VENDA();
 
 
 

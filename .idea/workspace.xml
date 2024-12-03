@@ -20,13 +20,23 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6162155-5516-41e9-893f-46039027e6c8" name="Changes" comment="arrumadno estrutura">
+    <list default="true" id="b6162155-5516-41e9-893f-46039027e6c8" name="Changes" comment="arruamdno ingrediente">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/basics.c" beforeDir="false" afterPath="$PROJECT_DIR$/basics.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/basics.h" beforeDir="false" afterPath="$PROJECT_DIR$/basics.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/basics.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/basics.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/ingrediente.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/ingrediente.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/main.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/pizza.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/pizza.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TrabalhoPraticoAEDs1.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/TrabalhoPraticoAEDs1.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ingrediente.c" beforeDir="false" afterPath="$PROJECT_DIR$/ingrediente.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ingrediente.h" beforeDir="false" afterPath="$PROJECT_DIR$/ingrediente.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pizza.c" beforeDir="false" afterPath="$PROJECT_DIR$/pizza.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pizza.h" beforeDir="false" afterPath="$PROJECT_DIR$/pizza.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +71,8 @@
     <setting file="file://$APPLICATION_HOME_DIR$/bin/mingw/x86_64-w64-mingw32/include/ctype.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://C:/Users/paulo/OneDrive/Área de Trabalho/TrabalhoPraticoAEDs1/ingrediente.c" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/paulo/OneDrive/Área de Trabalho/TrabalhoPraticoAEDs1/ingrediente.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.h" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -76,25 +88,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;CMake Application.TrabalhoPraticoAEDs1.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "CMake Application.TrabalhoPraticoAEDs1.executor": "Run",
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "vcs.Git",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="TrabalhoPraticoAEDs1" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TrabalhoPraticoAEDs1" TARGET_NAME="TrabalhoPraticoAEDs1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="TrabalhoPraticoAEDs1" RUN_TARGET_NAME="TrabalhoPraticoAEDs1">
       <method v="2">
@@ -116,7 +128,7 @@
       <option name="presentableId" value="Default" />
       <updated>1733014880927</updated>
       <workItem from="1733014883158" duration="6871000" />
-      <workItem from="1733166976544" duration="3121000" />
+      <workItem from="1733166976544" duration="25349000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <option name="closed" value="true" />
@@ -206,7 +218,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733022570143</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="arruamdno ingrediente">
+      <option name="closed" value="true" />
+      <created>1733170355762</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1733170355762</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,6 +263,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first" />
     <MESSAGE value="arrumadno estrutura" />
-    <option name="LAST_COMMIT_MESSAGE" value="arrumadno estrutura" />
+    <MESSAGE value="arruamdno ingrediente" />
+    <option name="LAST_COMMIT_MESSAGE" value="arruamdno ingrediente" />
   </component>
 </project>
