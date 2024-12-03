@@ -147,41 +147,80 @@ void editar_ingrediente_CRUD( int *qnt)
     free(ingrediente);
 }
 
-void remover_ingrediente_CRUD(Ingredientes *ingrediente, int *qtd)
+void remover_ingrediente_CRUD(int *qnt)
 {
-    FILE *arquivo = fopen("Ingredientes.txt", "a");
-
-    if (arquivo == NULL)
+    if (*qnt == 0)
     {
-        printf("Erro ao abrir o arquivo\n");
+        printf("Nenhum ingrediente para remover.\n");
+        return;
     }
-    int id_para_remover=0,posicao_para_remover=0,tamanhoArquivo = *qtd;
-    char linha[100];
-    Ingredientes *ingredienteAux = NULL;
 
     visualizar_ingrediente_CRUD();
-    printf("Digete o ID do item a ser removido:\n");
-    scanf("%d",id_para_remover);getchar();
 
-    for (int i = 1; i <= tamanhoArquivo; i++)
+    int id_para_remover, encontrado = 0;
+    printf("Digite o ID do ingrediente que deseja remover: ");
+    scanf("%d", &id_para_remover);
+    getchar();
+
+    // Aloca memória para carregar os ingredientes
+    Ingredientes *ingrediente = (Ingredientes *)malloc((*qnt) * sizeof(Ingredientes));
+    if (ingrediente == NULL)
     {
-        printf("%d ",i);
+        printf("Erro ao alocar memória.\n");
+        return;
+    }
+
+    FILE *arquivo = fopen("Ingredientes.txt", "r");
+    if (arquivo == NULL)
+    {
+        printf("Erro ao abrir o arquivo para leitura.\n");
+        free(ingrediente);
+        return;
+    }
+
+    // Carrega os ingredientes do arquivo para a memória
+    int i = 0;
+    char linha[100];
+    while (fgets(linha, sizeof(linha), arquivo) != NULL)
+    {
+        sscanf(linha, "%d;%29[^;];%f", &ingrediente[i].id, ingrediente[i].nome, &ingrediente[i].preco);
+        i++;
+    }
+    fclose(arquivo);
+
+    // Abre o arquivo para reescrever apenas os ingredientes que não foram removidos
+    arquivo = fopen("Ingredientes.txt", "w");
+    if (arquivo == NULL)
+    {
+        printf("Erro ao abrir o arquivo para escrita.\n");
+        free(ingrediente);
+        return;
+    }
+
+    for (i = 0; i < *qnt; i++)
+    {
         if (ingrediente[i].id == id_para_remover)
         {
-
-            posicao_para_remover = i;printf("%d ",posicao_para_remover);
-
+            encontrado = 1; // Marca que encontrou o ingrediente para remover
+        }
+        else
+        {
+            fprintf(arquivo, "%d;%s;%.2f\n", ingrediente[i].id, ingrediente[i].nome, ingrediente[i].preco);
         }
     }
 
-    fscanf(arquivo,"%d;%s;%f",ingredienteAux[*qtd].id,ingredienteAux[*qtd].nome,ingredienteAux[*qtd].preco);
-    printf("%d;%s;%f",ingredienteAux[*qtd].id,ingredienteAux[*qtd].nome,ingredienteAux[*qtd].preco);
+    fclose(arquivo);
+    free(ingrediente);
 
-
-
-    (*qtd)--;
-    atualizar_ingredientes(ingrediente, *qtd);
-
+    if (encontrado)
+    {
+        (*qnt)--; //diminui a quantidade de ingredientes
+        printf("Ingrediente removido com sucesso!\n");
+    }
+    else
+    {
+        printf("Ingrediente com ID %d não encontrado.\n", id_para_remover);
+    }
 }
 
 int menu_ingrediente() {
