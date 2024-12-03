@@ -8,8 +8,6 @@ void adicionar_ingrediente_CRUD(int *qnt)
 
     do
     {
-
-
         printf("Digite o ID do Ingrediente: ");
         scanf("%d", &ingrediente[*qnt].id);
         getchar();
