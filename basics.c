@@ -1,7 +1,7 @@
-#include "pizza.h"
-#include "ingrediente.h"
-#include "venda.h"
-#include "basics.h"
+#include "headers/pizza.h"
+#include "headers/ingrediente.h"
+#include "headers/venda.h"
+#include "headers/basics.h"
 
 
 //Exportar e Importar Dados

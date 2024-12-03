@@ -1,11 +1,9 @@
-#include "basics.h"
+#include "headers/basics.h"
 
 int carrega_quantidade_de_ingredientes() {
     int contadorLinhas = 0;
     char linha[100];
-    FILE *arquivo;
-
-    arquivo = fopen("Ingredientes.txt", "r");
+    FILE *arquivo = fopen("Ingredientes.txt", "r");
 
     if(arquivo == NULL){
         printf("Erro ao abrir o arquivo de carrega_quantidade_de_ingredientes");
@@ -21,8 +19,8 @@ int carrega_quantidade_de_ingredientes() {
     return contadorLinhas;
 }
 
-int main(void) {
-    int respFinal=0, respMenuPrincipal=0, qtdIngrediente=0;
+int main() {
+    int respFinal=0, qtdIngrediente=0;
     qtdIngrediente = carrega_quantidade_de_ingredientes();
     printf("%d",qtdIngrediente);
     //mostra menu principal e chama o opção selecionada

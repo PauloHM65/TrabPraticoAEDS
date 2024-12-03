@@ -5,10 +5,10 @@ set(CMAKE_C_STANDARD 17)
 
 add_executable(TrabalhoPraticoAEDs1 main.c
         pizza.c
-        pizza.h
+        headers/pizza.h
         ingrediente.c
-        ingrediente.h
+        headers/ingrediente.h
         basics.c
-        basics.h
+        headers/basics.h
         venda.c
-        venda.h)
+        headers/venda.h)

@@ -1,4 +1,4 @@
-#include "ingrediente.h"
+#include "headers/ingrediente.h"
 
 void adicionar_ingrediente_CRUD(int *qnt)
 {
@@ -95,7 +95,7 @@ void editar_ingrediente_CRUD( int *qnt)
 
     visualizar_ingrediente_CRUD();
     printf("Digite o ID do Ingrediente a ser alterado: \n");
-    scanf("%d", &id_alteracao); //55
+    scanf("%d", &id_alteracao);
     getchar();
 
     for (int i =0 ; i < *qnt; i++)
