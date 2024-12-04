@@ -55,14 +55,14 @@ build CMakeFiles/TrabalhoPraticoAEDs1.dir/main.c.obj: C_COMPILER__TrabalhoPratic
   OBJECT_DIR = CMakeFiles\TrabalhoPraticoAEDs1.dir
   OBJECT_FILE_DIR = CMakeFiles\TrabalhoPraticoAEDs1.dir
 
-build CMakeFiles/TrabalhoPraticoAEDs1.dir/pizza.c.obj: C_COMPILER__TrabalhoPraticoAEDs1_unscanned_Debug C$:/Users/paulo/OneDrive/Área$ de$ Trabalho/TrabalhoPraticoAEDs1/pizza.c || cmake_object_order_depends_target_TrabalhoPraticoAEDs1
-  DEP_FILE = CMakeFiles\TrabalhoPraticoAEDs1.dir\pizza.c.obj.d
+build CMakeFiles/TrabalhoPraticoAEDs1.dir/ingrediente.c.obj: C_COMPILER__TrabalhoPraticoAEDs1_unscanned_Debug C$:/Users/paulo/OneDrive/Área$ de$ Trabalho/TrabalhoPraticoAEDs1/ingrediente.c || cmake_object_order_depends_target_TrabalhoPraticoAEDs1
+  DEP_FILE = CMakeFiles\TrabalhoPraticoAEDs1.dir\ingrediente.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\TrabalhoPraticoAEDs1.dir
   OBJECT_FILE_DIR = CMakeFiles\TrabalhoPraticoAEDs1.dir
 
-build CMakeFiles/TrabalhoPraticoAEDs1.dir/ingrediente.c.obj: C_COMPILER__TrabalhoPraticoAEDs1_unscanned_Debug C$:/Users/paulo/OneDrive/Área$ de$ Trabalho/TrabalhoPraticoAEDs1/ingrediente.c || cmake_object_order_depends_target_TrabalhoPraticoAEDs1
-  DEP_FILE = CMakeFiles\TrabalhoPraticoAEDs1.dir\ingrediente.c.obj.d
+build CMakeFiles/TrabalhoPraticoAEDs1.dir/pizza.c.obj: C_COMPILER__TrabalhoPraticoAEDs1_unscanned_Debug C$:/Users/paulo/OneDrive/Área$ de$ Trabalho/TrabalhoPraticoAEDs1/pizza.c || cmake_object_order_depends_target_TrabalhoPraticoAEDs1
+  DEP_FILE = CMakeFiles\TrabalhoPraticoAEDs1.dir\pizza.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\TrabalhoPraticoAEDs1.dir
   OBJECT_FILE_DIR = CMakeFiles\TrabalhoPraticoAEDs1.dir
@@ -87,7 +87,7 @@ build CMakeFiles/TrabalhoPraticoAEDs1.dir/venda.c.obj: C_COMPILER__TrabalhoPrati
 #############################################
 # Link the executable TrabalhoPraticoAEDs1.exe
 
-build TrabalhoPraticoAEDs1.exe: C_EXECUTABLE_LINKER__TrabalhoPraticoAEDs1_Debug CMakeFiles/TrabalhoPraticoAEDs1.dir/main.c.obj CMakeFiles/TrabalhoPraticoAEDs1.dir/pizza.c.obj CMakeFiles/TrabalhoPraticoAEDs1.dir/ingrediente.c.obj CMakeFiles/TrabalhoPraticoAEDs1.dir/basics.c.obj CMakeFiles/TrabalhoPraticoAEDs1.dir/venda.c.obj
+build TrabalhoPraticoAEDs1.exe: C_EXECUTABLE_LINKER__TrabalhoPraticoAEDs1_Debug CMakeFiles/TrabalhoPraticoAEDs1.dir/main.c.obj CMakeFiles/TrabalhoPraticoAEDs1.dir/ingrediente.c.obj CMakeFiles/TrabalhoPraticoAEDs1.dir/pizza.c.obj CMakeFiles/TrabalhoPraticoAEDs1.dir/basics.c.obj CMakeFiles/TrabalhoPraticoAEDs1.dir/venda.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\TrabalhoPraticoAEDs1.dir

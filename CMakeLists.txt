@@ -4,11 +4,11 @@ project(TrabalhoPraticoAEDs1 C)
 set(CMAKE_C_STANDARD 17)
 
 add_executable(TrabalhoPraticoAEDs1 main.c
-        pizza.c
-        headers/pizza.h
         ingrediente.c
-        headers/ingrediente.h
+        ingrediente.h
+        pizza.c
+        pizza.h
         basics.c
-        headers/basics.h
+        basics.h
         venda.c
-        headers/venda.h)
+        venda.h)

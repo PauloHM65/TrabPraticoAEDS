@@ -1,8 +1,12 @@
 # ninja log v6
-73	718	7549423669234408	CMakeFiles/TrabalhoPraticoAEDs1.dir/ingrediente.c.obj	419ee00485db0802
-135	737	7549423669855011	CMakeFiles/TrabalhoPraticoAEDs1.dir/basics.c.obj	94586e1b2f9f1ff3
-11	246	7549423809311870	CMakeFiles/TrabalhoPraticoAEDs1.dir/main.c.obj	deeccfce694f8f98
-49	540	7549423668997456	CMakeFiles/TrabalhoPraticoAEDs1.dir/pizza.c.obj	9efe0872416e54a
+33	433	7549752075336080	CMakeFiles/TrabalhoPraticoAEDs1.dir/ingrediente.c.obj	419ee00485db0802
+54	586	7549752287560410	CMakeFiles/TrabalhoPraticoAEDs1.dir/basics.c.obj	94586e1b2f9f1ff3
+21	393	7549745863121800	CMakeFiles/TrabalhoPraticoAEDs1.dir/main.c.obj	deeccfce694f8f98
+12	473	7549752287130233	CMakeFiles/TrabalhoPraticoAEDs1.dir/pizza.c.obj	9efe0872416e54a
 247	717	7549423811679050	TrabalhoPraticoAEDs1.exe	b7b205d9202b5751
-198	763	7549423670489172	CMakeFiles/TrabalhoPraticoAEDs1.dir/venda.c.obj	7266b0ea5ead1322
-7	504	7549437457499178	build.ninja	f14af911a510f2fa
+81	643	7549752287822109	CMakeFiles/TrabalhoPraticoAEDs1.dir/venda.c.obj	7266b0ea5ead1322
+4	442	7549755849719995	build.ninja	f14af911a510f2fa
+31	347	7549756216156258	CMakeFiles/TrabalhoPraticoAEDs1.dir/pizza.c.obj	9efe0872416e54a
+47	404	7549756216321560	CMakeFiles/TrabalhoPraticoAEDs1.dir/basics.c.obj	94586e1b2f9f1ff3
+84	443	7549756216694216	CMakeFiles/TrabalhoPraticoAEDs1.dir/venda.c.obj	7266b0ea5ead1322
+30	299	7549756600960407	CMakeFiles/TrabalhoPraticoAEDs1.dir/venda.c.obj	7266b0ea5ead1322

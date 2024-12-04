@@ -1,7 +1,7 @@
-#include "headers/pizza.h"
-#include "headers/ingrediente.h"
-#include "headers/venda.h"
-#include "headers/basics.h"
+#include "pizza.h"
+#include "ingrediente.h"
+#include "venda.h"
+#include "basics.h"
 
 
 //Exportar e Importar Dados
@@ -90,19 +90,24 @@ void CRUD_INGREDIENTE(int *qtd) {
 
 }
 // so adicionei o while e a tela
-void VENDA() {
+void VENDA(int *qtdIngredientes,int *qtdPizza) {
+    Pizza* pizza = criaPizzaVenda();
+
     int respVenda =0;
     do {
         respVenda = menu_venda();
         switch(respVenda) {
             case 1:
-                venda_pizza();
+                // pizza do cardapio
+                    pizza = venda_pizza_cardapio(qtdPizza);
             break;
             case 2:
-                venda_pizza_cardapio();
+                //adicionar mais ingredientes
+                    pizza =venda_pizza_adiciona_ingrediente(pizza,qtdIngredientes);
             break;
             case 3:
-                venda_pizza_adiciona_ingrediente();
+                //fazer a venda
+                    venda_pizza(pizza,qtdIngredientes);
             break;
             case 0:
                 printf(" --> VENDA encerrando!!<--\n");
@@ -110,5 +115,7 @@ void VENDA() {
             default:
                 printf("Opcao invalida!! Tente novamente");
         }
+
     }while(respVenda != 0);
+    free(pizza);
 }

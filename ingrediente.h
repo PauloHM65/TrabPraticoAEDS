@@ -6,13 +6,13 @@
 #include <ctype.h>
 #include <string.h>
 #include <stdlib.h>
-
+#include "pizza.h"
 
 typedef struct Ingrediente {
     int id;
     char nome[30];
     float preco;
-}Ingredientes;
+}Ingrediente;
 
 void adicionar_ingrediente_CRUD(int *qnt);
 void visualizar_ingrediente_CRUD();
