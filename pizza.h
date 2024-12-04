@@ -2,6 +2,14 @@
 #ifndef PIZZA_H
 #define PIZZA_H
 
+#define TAMANHO_PIZZA_PEQUENA 40.00
+#define TAMANHO_PIZZA_MEDIA 50.00
+#define TAMANHO_PIZZA_GRANDE 60.00
+
+#define MAX_INGREDIENTE 12
+#define MAX_LENGTH_NAME_PIZZA 20
+
+
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
@@ -10,10 +18,10 @@
 
 typedef struct Pizza{
     int Id;
-    char Nome[30];
+    char Nome[MAX_LENGTH_NAME_PIZZA];
     char Tamanho;//P,M,G
     float Preco;
-    Ingrediente Ingredientes[15];//Array com os ingredientes padrão da pizza
+    Ingrediente Ingredientes[MAX_INGREDIENTE];//Array com os ingredientes padrão da pizza
 }Pizza;
 
 void adicionar_pizza_CRUD();

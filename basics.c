@@ -75,6 +75,7 @@ void CRUD_INGREDIENTE(int *qtd) {
                 editar_ingrediente_CRUD(qtd);
             break;
             case 4:
+                printf("%d",*qtd);
                 remover_ingrediente_CRUD(qtd);
             break;
             case 0:
@@ -96,15 +97,15 @@ void VENDA(int *qtdIngredientes,int *qtdPizza) {
         switch(respVenda) {
             case 1:
                 // pizza do cardapio
-                    pizza = venda_pizza_cardapio(qtdPizza);
+                    pizza = venda_pizza_cardapio();
             break;
             case 2:
                 //adicionar mais ingredientes
-                    pizza =venda_pizza_adiciona_ingrediente(pizza,qtdIngredientes);
+                    venda_pizza_adiciona_ingrediente(pizza);
             break;
             case 3:
                 //fazer a venda
-                    venda_pizza(pizza,qtdIngredientes);
+                    venda_pizza(pizza);
             break;
             case 0:
                 printf(" --> VENDA encerrando!!<--\n");

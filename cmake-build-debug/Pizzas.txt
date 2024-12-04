@@ -1,1 +1,4 @@
-1;Calabresa;M;40.00;1,2,3
+1;Calabresa;M;50.00;1,2,3
+2;Peperoni;P;40.00;17,5,2
+3;Peito de Peru;G;60.00;12
+4;Portuguesa;G;60.00;1,2,4,11,7

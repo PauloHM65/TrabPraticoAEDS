@@ -4,17 +4,14 @@
 4;Azeitona;6.00
 5;Oregano;2.00
 6;Cebola;4.00
-7;Frango;15.00
 8;Calabresa;14.00
 9;Molho de tomate;3.50
 10;Bacon;16.00
 11;Catupiry;18.00
 12;Pimentao;4.50
 13;Palmito;8.00
-14;Alho;3.00
 15;Manjericao;2.50
 16;Rucula;6.00
 17;Queijo Parmesao;12.50
 18;Provolone;14.00
 19;Champignon;9.00
-20;Milho;5.50

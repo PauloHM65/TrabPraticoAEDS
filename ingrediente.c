@@ -25,7 +25,7 @@ void adicionar_ingrediente_CRUD(int *qnt)
 
         (*qnt)++;
 
-        printf("Gostaria de adicionar mais um Ingrediente? ");
+        printf("Gostaria de adicionar mais um Ingrediente? (S / N)");
         scanf(" %c", &continuar);
     } while (continuar == 'S' || continuar == 's');
     free(ingrediente);
@@ -147,41 +147,63 @@ void editar_ingrediente_CRUD( int *qnt)
     free(ingrediente);
 }
 
-void remover_ingrediente_CRUD(Ingrediente *ingrediente, int *qtd)
-{
-    FILE *arquivo = fopen("Ingredientes.txt", "a");
+void remover_ingrediente_CRUD(int *qtd) {
+    int tamanhoArquivo = *qtd, novaQtd = 0,i=0;
+    char id_para_remover[3];
+    Ingrediente *ingredientes = (Ingrediente *)calloc(tamanhoArquivo, sizeof(Ingrediente));
 
-    if (arquivo == NULL)
-    {
-        printf("Erro ao abrir o arquivo\n");
+    if (ingredientes == NULL) {
+        printf("Erro ao alocar memória.\n");
+        return;
     }
-    int id_para_remover=0,posicao_para_remover=0,tamanhoArquivo = *qtd;
-    char linha[100];
-    Ingrediente *ingredienteAux = NULL;
 
+    FILE *arquivo = fopen("Ingredientes.txt", "r");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        free(ingredientes);
+        return;
+    }
+    // Exibir os ingredientes
     visualizar_ingrediente_CRUD();
-    printf("Digete o ID do item a ser removido:\n");
-    scanf("%d",id_para_remover);getchar();
+    printf("Digite o ID do item a ser removido:\n");getchar();
+    fgets(id_para_remover, sizeof(id_para_remover), stdin);getchar();
+    id_para_remover[strcspn(id_para_remover, "\n")] = '\0'; // Remover o '\n'
 
-    for (int i = 1; i <= tamanhoArquivo; i++)
-    {
-        printf("%d ",i);
-        if (ingrediente[i].id == id_para_remover)
-        {
+    while (i < tamanhoArquivo) {
+        char linha[100];
 
-            posicao_para_remover = i;printf("%d ",posicao_para_remover);
+        if (fgets(linha, sizeof(linha), arquivo) != NULL) {
+            Ingrediente ingredienteTemporario;
 
+            // Verifique se a linha está no formato esperado
+            sscanf(linha, "%d;%29[^;];%f", &ingredienteTemporario.id, ingredienteTemporario.nome, &ingredienteTemporario.preco);
+            char idStr[10];
+            sprintf(idStr, "%d", ingredienteTemporario.id);
+
+            // Comparar o ID lido com o ID para remover
+            if (strcmp(idStr, id_para_remover) != 0) {
+                // Se for diferente, mantemos no array
+                ingredientes[novaQtd] = ingredienteTemporario;
+                novaQtd++;
+
+            }
+            i++;
+        } else {
+            i++;
         }
     }
 
-    fscanf(arquivo,"%d;%s;%f",ingredienteAux[*qtd].id,ingredienteAux[*qtd].nome,ingredienteAux[*qtd].preco);
-    printf("%d;%s;%f",ingredienteAux[*qtd].id,ingredienteAux[*qtd].nome,ingredienteAux[*qtd].preco);
+    fclose(arquivo);
 
+    if (novaQtd == tamanhoArquivo) {
+        printf("Nenhum ingrediente foi removido. ID nao encontrado.\n");
+    } else {
+        (*qtd) = novaQtd; // Atualiza a quantidade de ingredientes
+        atualizar_ingrediente(ingredientes, *qtd);
+        printf("Ingrediente removido com sucesso!\n");
+    }
 
-
-    (*qtd)--;
-    atualizar_ingrediente(ingrediente, *qtd);
-
+    free(ingredientes);
 }
 
 int menu_ingrediente() {

@@ -9,20 +9,25 @@ void adicionar_pizza_CRUD(int *qnt_pizza)
     do
     {
         printf("Digite o ID da Pizza: ");
-        scanf("%d", &pizza[*qnt_pizza].Id);
+        scanf("%d", &pizza->Id);
         getchar();
 
         printf("Digite o Nome da Pizza: ");
-        fgets(pizza[*qnt_pizza].Nome, 30, stdin);
-        pizza[*qnt_pizza].Nome[strcspn(pizza[*qnt_pizza].Nome, "\n")] = '\0';
+        fgets(pizza->Nome, 30, stdin);
+        pizza->Nome[strcspn(pizza->Nome, "\n")] = '\0';
 
         printf("Digite o Tamanho da Pizza (P, M ou G): ");
-        scanf(" %c", &pizza[*qnt_pizza].Tamanho);
+        scanf(" %c", &pizza->Tamanho);
+        pizza->Tamanho = toupper(pizza->Tamanho);
         getchar();
 
-        printf("Digite o preco da Pizza: ");
-        scanf("%f", &pizza[*qnt_pizza].Preco);
-        getchar();
+        if(pizza->Tamanho == 'P')
+            pizza->Preco = TAMANHO_PIZZA_PEQUENA;
+        if(pizza->Tamanho == 'M')
+            pizza->Preco = TAMANHO_PIZZA_MEDIA;
+        if(pizza->Tamanho == 'G')
+            pizza->Preco = TAMANHO_PIZZA_GRANDE;
+
 
         // Abrir o arquivo de ingredientes
         FILE *arquivo_ingredientes = fopen("Ingredientes.txt", "r");
@@ -88,7 +93,7 @@ void adicionar_pizza_CRUD(int *qnt_pizza)
                 {
                     if (temp_ingrediente.id == id_ingrediente)
                     {
-                        pizza[*qnt_pizza].Ingredientes[qnt_ingredientes] = temp_ingrediente;
+                        pizza->Ingredientes[qnt_ingredientes] = temp_ingrediente;
                         qnt_ingredientes++;
                         encontrado = 1;
                         break;
@@ -112,11 +117,11 @@ void adicionar_pizza_CRUD(int *qnt_pizza)
             return;
         }
         // Salvar a pizza no arquivo de pizzas
-        fprintf(arquivo_pizzas, "%d;%s;%c;%.2f;", pizza[*qnt_pizza].Id, pizza[*qnt_pizza].Nome, pizza[*qnt_pizza].Tamanho, pizza[*qnt_pizza].Preco);
+        fprintf(arquivo_pizzas, "%d;%s;%c;%.2f;", pizza->Id, pizza->Nome, pizza->Tamanho, pizza->Preco);
 
         for (int i = 0; i < qnt_ingredientes; i++)
         {
-            fprintf(arquivo_pizzas, "%d", pizza[*qnt_pizza].Ingredientes[i].id);
+            fprintf(arquivo_pizzas, "%d", pizza->Ingredientes[i].id);
             if (i < qnt_ingredientes - 1)
                 fprintf(arquivo_pizzas, ",");
         }
