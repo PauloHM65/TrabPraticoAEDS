@@ -1,8 +1,8 @@
-#include "ingrediente.h"
+#include "headers/ingrediente.h"
 
 void adicionar_ingrediente_CRUD(int *qnt)
 {
-    Ingrediente *ingrediente = (Ingrediente*)malloc( sizeof(Ingrediente));
+    Ingredientes *ingrediente = (Ingredientes*)malloc( sizeof(Ingredientes));
     char continuar;
     FILE *arquivo = fopen("Ingredientes.txt", "a");
 
@@ -66,7 +66,7 @@ void visualizar_ingrediente_CRUD()
     fclose(arquivo);
 }
 
-void atualizar_ingredientes(Ingrediente *ingrediente, int qnt)
+void atualizar_ingredientes(Ingredientes *ingrediente, int qnt)
 {
     FILE *arquivo = fopen("Ingredientes.txt", "w");
     if (arquivo == NULL)
@@ -89,8 +89,8 @@ void editar_ingrediente_CRUD( int *qnt)
     int id_alteracao, posicao_alteracao=-1,id = 0;;
     float novo_preco = 0.0,preco = 0.0;
     FILE *arquivo = fopen("Ingredientes.txt", "r");
-    Ingrediente* ingrediente =NULL;
-    ingrediente = (Ingrediente*)realloc(ingrediente, (*qnt)*sizeof(Ingrediente));
+    Ingredientes* ingrediente =NULL;
+    ingrediente = (Ingredientes*)realloc(ingrediente, (*qnt)*sizeof(Ingredientes));
 
 
     visualizar_ingrediente_CRUD();
@@ -147,7 +147,7 @@ void editar_ingrediente_CRUD( int *qnt)
     free(ingrediente);
 }
 
-void remover_ingrediente_CRUD(Ingrediente *ingrediente, int *qtd)
+void remover_ingrediente_CRUD(Ingredientes *ingrediente, int *qtd)
 {
     FILE *arquivo = fopen("Ingredientes.txt", "a");
 
@@ -157,7 +157,7 @@ void remover_ingrediente_CRUD(Ingrediente *ingrediente, int *qtd)
     }
     int id_para_remover=0,posicao_para_remover=0,tamanhoArquivo = *qtd;
     char linha[100];
-    Ingrediente *ingredienteAux = NULL;
+    Ingredientes *ingredienteAux = NULL;
 
     visualizar_ingrediente_CRUD();
     printf("Digete o ID do item a ser removido:\n");
