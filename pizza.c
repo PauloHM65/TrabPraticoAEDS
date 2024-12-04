@@ -1,39 +1,5 @@
 #include "pizza.h"
 
-void visualizar_ingrediente_CRUD()
-{
-    FILE *arquivo = fopen("Ingredientes.txt", "r");
-
-    if (arquivo == NULL)
-    {
-        printf("Erro ao abrir o arquivo\n");
-    }
-
-    char linha[100];
-    printf("\nIngredientes cadastrados no arquivo:\n");
-
-    int existe_ingrediente = 0; // Flag para verificar se há ingredientes no arquivo
-    while (fgets(linha, sizeof(linha), arquivo))
-    {
-        int id = 0;
-        char nome[30];
-        float preco = 0.0;
-
-        // Lê os dados da linha no formato esperado
-        // printf("%s\n", linha);
-        if (sscanf(linha, "%d;%29[^;];%f", &id, nome, &preco) == 3)
-        {
-            printf("%d - %s R$%.2f\n", id, nome, preco);
-            existe_ingrediente = 1; // Marca que encontrou pelo menos um ingrediente
-        }
-    }
-
-    if (!existe_ingrediente)
-    {
-        printf("Nenhum ingrediente encontrado no arquivo!\n");
-    }
-    fclose(arquivo);
-}
 
 void adicionar_pizza_CRUD(int *qnt_pizza)
 {
@@ -54,7 +20,7 @@ void adicionar_pizza_CRUD(int *qnt_pizza)
         scanf(" %c", &pizza[*qnt_pizza].Tamanho);
         getchar();
 
-        printf("Digite o preço da Pizza: ");
+        printf("Digite o preco da Pizza: ");
         scanf("%f", &pizza[*qnt_pizza].Preco);
         getchar();
 
@@ -117,7 +83,7 @@ void adicionar_pizza_CRUD(int *qnt_pizza)
             int encontrado = 0;
             while (fgets(linha, sizeof(linha), arquivo_ingredientes))
             {
-                Ingredientes temp_ingrediente;
+                Ingrediente temp_ingrediente;
                 if (sscanf(linha, "%d;%29[^;];%f", &temp_ingrediente.id, temp_ingrediente.nome, &temp_ingrediente.preco) == 3)
                 {
                     if (temp_ingrediente.id == id_ingrediente)
@@ -133,7 +99,7 @@ void adicionar_pizza_CRUD(int *qnt_pizza)
 
             if (!encontrado)
             {
-                printf("Ingrediente com ID %d não encontrado.\n", id_ingrediente);
+                printf("Ingrediente com ID %d nao encontrado.\n", id_ingrediente);
             }
         }
 
@@ -179,7 +145,7 @@ void visualizar_pizza_CRUD()
     }
 
     char linha[200];
-    printf("\nCardápio de Pizzas:\n");
+    printf("\nCardapio de Pizzas:\n");
 
     while (fgets(linha, sizeof(linha), arquivo))
     {
@@ -211,7 +177,7 @@ void visualizar_pizza_CRUD()
                 char linha_ingrediente[100];
                 while (fgets(linha_ingrediente, sizeof(linha_ingrediente), arquivo_ingredientes))
                 {
-                    Ingredientes temp_ingrediente;
+                    Ingrediente temp_ingrediente;
                     if (sscanf(linha_ingrediente, "%d;%29[^;];%f", &temp_ingrediente.id, temp_ingrediente.nome, &temp_ingrediente.preco) == 3)
                     {
                         if (temp_ingrediente.id == id_ingrediente)
@@ -236,7 +202,7 @@ void remover_pizza_CRUD(){}
 
 
 int menu_pizza() {
-    int NumeroOperaçãoPizza=0;
+    int NumeroOperacaoPizza=0;
     printf("\n");
     printf("*****************************|\n");
     printf("PIZZA(s):                    |\n");
@@ -247,9 +213,9 @@ int menu_pizza() {
     printf(" 4 - Remover Pizza           |\n");
     printf(" 0 - Encerrar PIZZA(s)       |\n");
     printf("*****************************|\n");
-    scanf("%d",&NumeroOperaçãoPizza);
+    scanf("%d",&NumeroOperacaoPizza);
 
-    return NumeroOperaçãoPizza;
+    return NumeroOperacaoPizza;
 }
 
 

@@ -1,8 +1,8 @@
-#include "headers/ingrediente.h"
+#include "ingrediente.h"
 
 void adicionar_ingrediente_CRUD(int *qnt)
 {
-    Ingredientes *ingrediente = (Ingredientes*)malloc( sizeof(Ingredientes));
+    Ingrediente *ingrediente = (Ingrediente*)malloc( sizeof(Ingrediente));
     char continuar;
     FILE *arquivo = fopen("Ingredientes.txt", "a");
 
@@ -18,7 +18,7 @@ void adicionar_ingrediente_CRUD(int *qnt)
         fgets(ingrediente[*qnt].nome, 30, stdin);
         ingrediente[*qnt].nome[strcspn(ingrediente[*qnt].nome, "\n")] = '\0';
 
-        printf("Digite o preço do Ingrediente: ");
+        printf("Digite o preco do Ingrediente: ");
         scanf("%f", &ingrediente[*qnt].preco);getchar();
 
         fprintf(arquivo, "%d;%s;%.2f\n", ingrediente[*qnt].id, ingrediente[*qnt].nome, ingrediente[*qnt].preco);
@@ -41,9 +41,9 @@ void visualizar_ingrediente_CRUD()
     }
 
     char linha[100];
-    printf("\nIngredientes cadastrados no arquivo:\n");
+    printf("\nIngrediente cadastrados no arquivo:\n");
 
-    int existe_ingrediente = 0; // Flag para verificar se há ingredientes no arquivo
+    int existe_ingrediente = 0; // Flag para verificar se há ingrediente no arquivo
     while (fgets(linha, sizeof(linha), arquivo))
     {
         int id = 0;
@@ -66,12 +66,12 @@ void visualizar_ingrediente_CRUD()
     fclose(arquivo);
 }
 
-void atualizar_ingredientes(Ingredientes *ingrediente, int qnt)
+void atualizar_ingrediente(Ingrediente *ingrediente, int qnt)
 {
     FILE *arquivo = fopen("Ingredientes.txt", "w");
     if (arquivo == NULL)
     {
-        printf("Erro ao abrir o arquivo para salvar os ingredientes.\n");
+        printf("Erro ao abrir o arquivo para salvar os ingrediente.\n");
         return;
     }
 
@@ -89,8 +89,8 @@ void editar_ingrediente_CRUD( int *qnt)
     int id_alteracao, posicao_alteracao=-1,id = 0;;
     float novo_preco = 0.0,preco = 0.0;
     FILE *arquivo = fopen("Ingredientes.txt", "r");
-    Ingredientes* ingrediente =NULL;
-    ingrediente = (Ingredientes*)realloc(ingrediente, (*qnt)*sizeof(Ingredientes));
+    Ingrediente* ingrediente =NULL;
+    ingrediente = (Ingrediente*)realloc(ingrediente, (*qnt)*sizeof(Ingrediente));
 
 
     visualizar_ingrediente_CRUD();
@@ -117,7 +117,7 @@ void editar_ingrediente_CRUD( int *qnt)
 
     if (posicao_alteracao < 0)
     {
-        printf("Ingrediente com ID %d não encontrado.\n", id_alteracao);
+        printf("Ingrediente com ID %d nao encontrado.\n", id_alteracao);
         return;
     }
 
@@ -143,11 +143,11 @@ void editar_ingrediente_CRUD( int *qnt)
 
     printf("%s - %f",ingrediente[posicao_alteracao].nome,ingrediente[posicao_alteracao].preco);
 
-    atualizar_ingredientes(ingrediente, *qnt);
+    atualizar_ingrediente(ingrediente, *qnt);
     free(ingrediente);
 }
 
-void remover_ingrediente_CRUD(Ingredientes *ingrediente, int *qtd)
+void remover_ingrediente_CRUD(Ingrediente *ingrediente, int *qtd)
 {
     FILE *arquivo = fopen("Ingredientes.txt", "a");
 
@@ -157,7 +157,7 @@ void remover_ingrediente_CRUD(Ingredientes *ingrediente, int *qtd)
     }
     int id_para_remover=0,posicao_para_remover=0,tamanhoArquivo = *qtd;
     char linha[100];
-    Ingredientes *ingredienteAux = NULL;
+    Ingrediente *ingredienteAux = NULL;
 
     visualizar_ingrediente_CRUD();
     printf("Digete o ID do item a ser removido:\n");
@@ -180,12 +180,12 @@ void remover_ingrediente_CRUD(Ingredientes *ingrediente, int *qtd)
 
 
     (*qtd)--;
-    atualizar_ingredientes(ingrediente, *qtd);
+    atualizar_ingrediente(ingrediente, *qtd);
 
 }
 
 int menu_ingrediente() {
-    int NumeroOperaçãoingrediente = 0;
+    int NumeroOperacaoingrediente = 0;
     printf("\n");
     printf("********************************|\n");
     printf("INGREDIENTE(s):                 |\n");
@@ -196,9 +196,9 @@ int menu_ingrediente() {
     printf(" 4 - Remover Ingrediente(s)     |\n");
     printf(" 0 - Fechar CRUD_INGREDIENTE(s) |\n");
     printf("********************************|\n");
-    scanf("%d",&NumeroOperaçãoingrediente);
+    scanf("%d",&NumeroOperacaoingrediente);
 
-    return NumeroOperaçãoingrediente;
+    return NumeroOperacaoingrediente;
 }
 
 

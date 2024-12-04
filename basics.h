@@ -5,7 +5,9 @@
 #include <ctype.h>
 #include <string.h>
 #include <stdlib.h>
-
+#include "pizza.h"
+#include "ingrediente.h"
+#include "venda.h"
 
 
 void salvar_cardapio_pizza();

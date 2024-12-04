@@ -6,7 +6,7 @@
 #include <ctype.h>
 #include <string.h>
 #include <stdlib.h>
-#include "pizza.h"
+
 
 typedef struct Ingrediente {
     int id;
@@ -14,8 +14,9 @@ typedef struct Ingrediente {
     float preco;
 }Ingrediente;
 
-void adicionar_ingrediente_CRUD(int *qnt);
+void adicionar_ingrediente_CRUD(int* qnt);
 void visualizar_ingrediente_CRUD();
+void atualizar_ingrediente(Ingrediente *ingrediente, int qnt);
 void editar_ingrediente_CRUD();
 void remover_ingrediente_CRUD();
 int menu_ingrediente();

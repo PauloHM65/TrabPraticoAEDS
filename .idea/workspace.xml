@@ -20,33 +20,24 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6162155-5516-41e9-893f-46039027e6c8" name="Changes" comment="juntei os headers">
+    <list default="true" id="b6162155-5516-41e9-893f-46039027e6c8" name="Changes" comment="fiz o cardapio vnedas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/basics.c" beforeDir="false" afterPath="$PROJECT_DIR$/basics.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cache-v2-272b9b3e19f34a242d0f.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-555529a12f7f8d441268.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2024-12-03T15-42-25-0914.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-TrabalhoPraticoAEDs1-Debug-099bfcb582b06991c930.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/basics.h" beforeDir="false" afterPath="$PROJECT_DIR$/basics.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/basics.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/basics.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/ingrediente.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/ingrediente.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/main.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/pizza.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/pizza.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/venda.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/venda.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Ingredientes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Ingredientes.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/basics.h" beforeDir="false" afterPath="$PROJECT_DIR$/basics.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/ingrediente.h" beforeDir="false" afterPath="$PROJECT_DIR$/ingrediente.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/pizza.h" beforeDir="false" afterPath="$PROJECT_DIR$/pizza.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/venda.h" beforeDir="false" afterPath="$PROJECT_DIR$/venda.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TrabalhoPraticoAEDs1.exe" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ingrediente.c" beforeDir="false" afterPath="$PROJECT_DIR$/ingrediente.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ingrediente.h" beforeDir="false" afterPath="$PROJECT_DIR$/ingrediente.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pizza.c" beforeDir="false" afterPath="$PROJECT_DIR$/pizza.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pizza.h" beforeDir="false" afterPath="$PROJECT_DIR$/pizza.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venda.c" beforeDir="false" afterPath="$PROJECT_DIR$/venda.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venda.h" beforeDir="false" afterPath="$PROJECT_DIR$/venda.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,8 +72,6 @@
     <setting file="file://$APPLICATION_HOME_DIR$/bin/mingw/x86_64-w64-mingw32/include/ctype.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://C:/Users/paulo/OneDrive/Área de Trabalho/TrabalhoPraticoAEDs1/ingrediente.c" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/paulo/OneDrive/Área de Trabalho/TrabalhoPraticoAEDs1/ingrediente.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://diff.h" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://diff.h" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -125,12 +114,12 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="TrabalhoPraticoAEDs1" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TrabalhoPraticoAEDs1" TARGET_NAME="TrabalhoPraticoAEDs1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="TrabalhoPraticoAEDs1" RUN_TARGET_NAME="TrabalhoPraticoAEDs1">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="TrabalhoPraticoAEDs1" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TrabalhoPraticoAEDs1" TARGET_NAME="TrabalhoPraticoAEDs1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="TrabalhoPraticoAEDs1" RUN_TARGET_NAME="TrabalhoPraticoAEDs1">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -147,7 +136,8 @@
       <workItem from="1733014883158" duration="6871000" />
       <workItem from="1733166976544" duration="28474000" />
       <workItem from="1733233991632" duration="7164000" />
-      <workItem from="1733252514006" duration="15047000" />
+      <workItem from="1733252514006" duration="16668000" />
+      <workItem from="1733274032508" duration="1218000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <option name="closed" value="true" />
@@ -285,7 +275,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733240822825</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="fiz o cardapio vnedas">
+      <option name="closed" value="true" />
+      <created>1733272524201</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1733272524201</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -326,7 +324,19 @@
     <MESSAGE value="arrumando teste, falta o remover" />
     <MESSAGE value="criei venda .h e.c. e arrumei as telas" />
     <MESSAGE value="juntei os headers" />
-    <option name="LAST_COMMIT_MESSAGE" value="juntei os headers" />
+    <MESSAGE value="fiz o cardapio vnedas" />
+    <option name="LAST_COMMIT_MESSAGE" value="fiz o cardapio vnedas" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/ingrediente.h</url>
+          <line>17</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

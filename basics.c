@@ -1,6 +1,4 @@
-#include "pizza.h"
-#include "ingrediente.h"
-#include "venda.h"
+
 #include "basics.h"
 
 
@@ -17,7 +15,7 @@ void ler_cardapio_ingedientes(){}
 
 
 int menu_principal() {
-    int NumeroOperação=0;
+    int NumeroOperacao=0;
     printf("\n");
     printf("*****************************|\n");
     printf("Digite a numero da operacao: |\n");
@@ -29,11 +27,11 @@ int menu_principal() {
     printf("-----------------------------|\n");
     printf(" 4 - Encerrar o programa     |\n");
     printf("*****************************|\n");
-    scanf("%d",&NumeroOperação);
-    if (!(NumeroOperação == 1 || NumeroOperação == 2 || NumeroOperação == 3|| NumeroOperação == 4)) {
-        NumeroOperação = 0;
+    scanf("%d",&NumeroOperacao);
+    if (!(NumeroOperacao == 1 || NumeroOperacao == 2 || NumeroOperacao == 3|| NumeroOperacao == 4)) {
+        NumeroOperacao = 0;
     }
-    return NumeroOperação;
+    return NumeroOperacao;
 }
 // so adicionei o while e a tela
 
@@ -43,16 +41,16 @@ void CRUD_PIZZA() {
         respPizza = menu_pizza();
         switch(respPizza) {
             case 1:
-
+                adicionar_pizza_CRUD();
                 break;
             case 2:
-
+                visualizar_pizza_CRUD();
                 break;
             case 3:
-
+                editar_pizza_CRUD();
                 break;
             case 4:
-
+                remover_pizza_CRUD();
                 break;
             case 0:
                 printf(" --> CRUD_PIZZA encerrando!!<--\n");
@@ -62,7 +60,6 @@ void CRUD_PIZZA() {
         }
     }while(respPizza != 0);
 }
-// 03/12 - Falta arruma o remover
 void CRUD_INGREDIENTE(int *qtd) {
     int respIngrediente =0;
     do {

@@ -6,14 +6,15 @@
 #include <ctype.h>
 #include <string.h>
 #include <stdlib.h>
+#include "ingrediente.h"
 
-typedef struct pizza{
+typedef struct Pizza{
     int Id;
     char Nome[30];
     char Tamanho;//P,M,G
     float Preco;
-    Ingredientes ingredientes[50];//Array com os ingredientes padrão da pizza
-}pizza;
+    Ingrediente Ingredientes[15];//Array com os ingredientes padrão da pizza
+}Pizza;
 
 void adicionar_pizza_CRUD();
 void visualizar_pizza_CRUD();
