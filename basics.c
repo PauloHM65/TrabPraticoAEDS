@@ -33,7 +33,6 @@ int menu_principal() {
     }
     return NumeroOperacao;
 }
-// so adicionei o while e a tela
 
 void CRUD_PIZZA() {
     int respPizza =0;
@@ -87,25 +86,26 @@ void CRUD_INGREDIENTE(int *qtd) {
     }while(respIngrediente != 0);
 
 }
-// so adicionei o while e a tela
-void VENDA(int *qtdIngredientes,int *qtdPizza) {
+
+void VENDA() {
     Pizza* pizza = criaPizzaVenda();
+    int qtd=0;
 
     int respVenda =0;
     do {
-        respVenda = menu_venda();
+        respVenda = menu_venda(pizza);
         switch(respVenda) {
             case 1:
                 // pizza do cardapio
-                    pizza = venda_pizza_cardapio();
+                    pizza = venda_pizza_cardapio(&qtd);
             break;
             case 2:
                 //adicionar mais ingredientes
-                    venda_pizza_adiciona_ingrediente(pizza);
+                    venda_pizza_adiciona_ingrediente(pizza,&qtd);
             break;
             case 3:
                 //fazer a venda
-                    venda_pizza(pizza);
+                    venda_pizza(pizza,&qtd);
             break;
             case 0:
                 printf(" --> VENDA encerrando!!<--\n");

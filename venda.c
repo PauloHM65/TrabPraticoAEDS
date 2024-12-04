@@ -2,33 +2,44 @@
 
 Pizza* criaPizzaVenda() {
     Pizza * pizza = (Pizza*)malloc(sizeof(Pizza));
+    pizza->Id = -15;
     return pizza;
 }
-void visualiza_pizza(Pizza* pizza, int qtdIng) {
-    int quantidadeDeIng=0;
-    float valorFinalPizza=0.0;
-    valorFinalPizza += pizza->Preco;
+int tamanhoArrayIngredientes(const Pizza*pizza) {
+    //vejo o tamanho do array de ingredientes da pizza ja existente
+    int tamanhoInicial=0,i=0;
+    char linha_ingrediente[100];
 
 
-    for(int i=0;i<qtdIng;i++){
-            valorFinalPizza += pizza->Ingredientes[i].preco;
+    for(int j=0;j<12;j++) {
+        FILE *arquivo_ingredientes = fopen("Ingredientes.txt", "r");
+        if (arquivo_ingredientes == NULL)
+        {
+            printf("\nErro ao abrir o arquivo de ingredientes.\n");
+        }
+        while (fgets(linha_ingrediente, sizeof(linha_ingrediente), arquivo_ingredientes))
+        {
+            Ingrediente temp_ingrediente;
+            if (sscanf(linha_ingrediente, "%d;%29[^;];%f", &temp_ingrediente.id,
+                temp_ingrediente.nome,&temp_ingrediente.preco) == 3)
+            {
+
+
+                if ( pizza->Ingredientes[j].id == temp_ingrediente.id){
+                    tamanhoInicial++;
+                    printf(" * %s   %d ---\n",pizza->Ingredientes[j].nome,tamanhoInicial);
+                }
+
+
+            }
+        }
+        fclose(arquivo_ingredientes);
     }
 
-    printf("Pizza Selecionada:\n");
-    printf("%s [%c] R$%.2f\n",pizza->Nome,
-        pizza->Tamanho,
-        pizza->Preco);
-    printf("   Ingredientes:\n");
-    for(int j=0;j<qtdIng;j++) {
-        printf("      %s : R$%.2f\n",pizza->Ingredientes[j].nome,
-        pizza->Ingredientes[j].preco);
-    }
-    printf("TOTAL:\n");
-    printf("\tVendida por: R$%.2f\n",valorFinalPizza);
+    return tamanhoInicial;
 }
-//vender pizza
 
-Pizza* venda_pizza_cardapio() {
+Pizza* venda_pizza_cardapio(int *qtd) {
     Pizza* pizza_selecionada = (Pizza*)malloc(sizeof(Pizza));
     int id_selecionado;
     char tamanho_selecionado;
@@ -60,7 +71,7 @@ Pizza* venda_pizza_cardapio() {
         // Lê os dados da pizza, incluindo os IDs dos ingredientes
         if (sscanf(linha, "%d;%29[^;];%c;%f;%99[^\n]", &id, nome, &tamanho, &preco, ingredientes_ids) == 5){
 
-            if(id == id_selecionado) {printf("achou o id %d\n" , id);
+            if(id == id_selecionado) {
                 pizza_selecionada->Id = id;
                 strcpy(pizza_selecionada->Nome,nome);
                 pizza_selecionada->Tamanho = tamanho_selecionado;
@@ -95,10 +106,9 @@ Pizza* venda_pizza_cardapio() {
                             if (temp_ingrediente.id == id_ingrediente)
                             {
                                 //prnitf("%s (R$%.2f), ", temp_ingrediente.nome, temp_ingrediente.preco);
+                                pizza_selecionada->Ingredientes[quantidadeDeIngrediente].id =temp_ingrediente.id;
                                 strcpy(pizza_selecionada->Ingredientes[quantidadeDeIngrediente].nome,temp_ingrediente.nome);
                                 pizza_selecionada->Ingredientes[quantidadeDeIngrediente].preco = temp_ingrediente.preco;
-                                pizza_selecionada->Ingredientes[quantidadeDeIngrediente].nome,
-                                pizza_selecionada->Ingredientes[quantidadeDeIngrediente].preco;
                                 quantidadeDeIngrediente++;
                                 break;
                             }
@@ -108,36 +118,26 @@ Pizza* venda_pizza_cardapio() {
 
                     token = strtok(NULL, ",");
                 }
+                *qtd = quantidadeDeIngrediente;
             }
         }
     }
     fclose(arquivo_pizza);
-    if(pizza_selecionada != NULL)
-        visualiza_pizza(pizza_selecionada,quantidadeDeIngrediente);
     return pizza_selecionada;
 }
 
-void venda_pizza_adiciona_ingrediente(Pizza*pizza) {
-    //vejo o tamanho do array de ingredientes da pizza ja existente
-    int tamanhoInicial=0,i=0;
-    while(tamanhoInicial ==0) {
-        if(pizza->Ingredientes[i].nome[0] == '\0' || pizza->Ingredientes[i].nome == NULL ) {
-            tamanhoInicial = i;
-        }
-        i++;
-    }
+void venda_pizza_adiciona_ingrediente(Pizza*pizza,int* qtd) {
 
     //mostra os ingredientes e faz o loop ate que o cliente n queira mais
     //ou atinja o max de ingredientes
-    char resp,linha[100];int id_ingrediente=0;
+    char resp,linha[100];int id_ingrediente_selecionado=1;
+    printf("");
     visualizar_ingrediente_CRUD();
-    while (tamanhoInicial < 12 || id_ingrediente!=0){
-
+    while (*qtd < 12 && id_ingrediente_selecionado!=0){
         printf("Digite o ID do ingrediente (0 para finalizar): ");
-        scanf("%d", &id_ingrediente);
+        scanf("%d", &id_ingrediente_selecionado);
         getchar();
-
-        if (id_ingrediente != 0) {
+        if (id_ingrediente_selecionado != 0) {
             // Reabrir o arquivo de ingredientes para buscar pelo ID
             FILE*arquivo_ingredientes = fopen("Ingredientes.txt", "r");
             if (arquivo_ingredientes == NULL)
@@ -151,11 +151,11 @@ void venda_pizza_adiciona_ingrediente(Pizza*pizza) {
                 Ingrediente temp_ingrediente;
                 if (sscanf(linha, "%d;%29[^;];%f", &temp_ingrediente.id, temp_ingrediente.nome, &temp_ingrediente.preco) == 3)
                 {
-                    if (temp_ingrediente.id == id_ingrediente)
+                    if (temp_ingrediente.id == id_ingrediente_selecionado)
                     {
-                        strcpy(pizza->Ingredientes[tamanhoInicial].nome,temp_ingrediente.nome);
-                        pizza->Ingredientes[tamanhoInicial].preco = temp_ingrediente.preco;
-                        tamanhoInicial++;
+                        strcpy(pizza->Ingredientes[*qtd].nome,temp_ingrediente.nome);
+                        pizza->Ingredientes[*qtd].preco = temp_ingrediente.preco;
+                        (*qtd)++;
                         encontrado = 1;
                         break;
                     }
@@ -165,28 +165,58 @@ void venda_pizza_adiciona_ingrediente(Pizza*pizza) {
 
             if (!encontrado)
             {
-                printf("Ingrediente com ID %d nao encontrado.\n", id_ingrediente);
+                printf("Ingrediente com ID %d nao encontrado.\n", id_ingrediente_selecionado);
             }
         }else{printf(" Cadastro de ingredientes finalizado!! ");}
     }
+    if(*qtd == 12)
+        printf(" Limite MAXIMO de ingredientes atingido!! ");
+
 
 }
-void venda_pizza(Pizza*pizza) {
+void venda_pizza(Pizza*pizza, int *quantidadeDeIngrediente) {
+    printf("%d",*quantidadeDeIngrediente);
+    //if(pizza != NULL)
+    //    visualiza_pizza_venda(pizza,quantidadeDeIngrediente);
+    float valorFinalPizza=0.0;
+    valorFinalPizza += pizza->Preco;
+
+
+    for(int i=0;i<*quantidadeDeIngrediente;i++){
+        valorFinalPizza += pizza->Ingredientes[i].preco;
+    }
+
+    printf("Pizza Selecionada:\n");
+    printf("%s [%c] R$%.2f\n",pizza->Nome,
+        pizza->Tamanho,
+        pizza->Preco);
+    printf("   Ingredientes:\n");
+    for(int j=0;j<*quantidadeDeIngrediente;j++) {
+        printf("      %s : R$%.2f\n",pizza->Ingredientes[j].nome,
+        pizza->Ingredientes[j].preco);
+    }
+    printf("TOTAL:\n");
+    printf("\tVendida por: R$%.2f\n",valorFinalPizza);
 }
 /*O preço final da pizza deve incluir o valor base mais o custo de
 qualquer ingrediente extra.*/
 
 
 
-int menu_venda(){
+int menu_venda(Pizza*pizza){
     int NumeroOperacaoVenda = 0;
     printf("\n");
     printf("************************************|\n");
     printf("VENDA(s):                           |\n");
+    if(pizza->Id  != -15) {
+        printf("************************************|\n");
+        printf("Pizza selecionada:                  |\n");
+        printf("%s [%c]                       \n",pizza->Nome, pizza->Tamanho);
+    }
     printf("************************************|\n");
     printf(" 1 - Selecionar pizza do cardapio   |\n");
-    printf(" 2 - Adicionar mais ingradiente(s)  |\n");
-    printf(" 3 - Ralizar a conta e vender       |\n");
+    printf(" 2 - Adicionar mais ingrediente(s)  |\n");
+    printf(" 3 - Realizar a venda               |\n");
     printf(" 0 - Fechar VENDA(s)                |\n");
     printf("************************************|\n");
     scanf("%d",&NumeroOperacaoVenda);

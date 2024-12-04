@@ -20,13 +20,17 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6162155-5516-41e9-893f-46039027e6c8" name="Changes" comment="ingredientes tudo ok">
+    <list default="true" id="b6162155-5516-41e9-893f-46039027e6c8" name="Changes" comment="venda pizza ok">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/basics.c" beforeDir="false" afterPath="$PROJECT_DIR$/basics.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/basics.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/basics.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/venda.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/venda.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Ingredientes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Ingredientes.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/TrabalhoPraticoAEDs1.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/TrabalhoPraticoAEDs1.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ingrediente.h" beforeDir="false" afterPath="$PROJECT_DIR$/ingrediente.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venda.c" beforeDir="false" afterPath="$PROJECT_DIR$/venda.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venda.h" beforeDir="false" afterPath="$PROJECT_DIR$/venda.h" afterDir="false" />
     </list>
@@ -110,11 +114,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -129,7 +128,8 @@
       <workItem from="1733233991632" duration="7164000" />
       <workItem from="1733252514006" duration="16668000" />
       <workItem from="1733274032508" duration="16868000" />
-      <workItem from="1733314798089" duration="8282000" />
+      <workItem from="1733314798089" duration="17991000" />
+      <workItem from="1733335944468" duration="8517000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <option name="closed" value="true" />
@@ -299,7 +299,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733319068546</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="venda pizza ok">
+      <option name="closed" value="true" />
+      <created>1733325511440</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1733325511440</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -343,7 +351,8 @@
     <MESSAGE value="fiz o cardapio vnedas" />
     <MESSAGE value="alinhei tudo" />
     <MESSAGE value="ingredientes tudo ok" />
-    <option name="LAST_COMMIT_MESSAGE" value="ingredientes tudo ok" />
+    <MESSAGE value="venda pizza ok" />
+    <option name="LAST_COMMIT_MESSAGE" value="venda pizza ok" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

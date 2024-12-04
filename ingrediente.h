@@ -16,11 +16,11 @@ typedef struct Ingrediente {
     float preco;
 }Ingrediente;
 
-void adicionar_ingrediente_CRUD(int* qnt);
+void adicionar_ingrediente_CRUD(int* );
 void visualizar_ingrediente_CRUD();
-void atualizar_ingrediente(Ingrediente *ingrediente, int qnt);
-void editar_ingrediente_CRUD(int* qnt);
-void remover_ingrediente_CRUD(int *qtd);
+void atualizar_ingrediente(Ingrediente *, int );
+void editar_ingrediente_CRUD(int* );
+void remover_ingrediente_CRUD(int *);
 int menu_ingrediente();
 
 void CRUD_INGREDIENTE();
