@@ -20,6 +20,6 @@ void venda_pizza_adiciona_ingrediente(Pizza*pizza);
 void venda_pizza(Pizza*pizza);
 /*O preço final da pizza deve incluir o valor base mais o custo de
 qualquer ingrediente extra.*/
-
+void visualiza_pizza_venda(Pizza*pizza,int qtdIng);
 Pizza* criaPizzaVenda();
 #endif //VENDA_H
