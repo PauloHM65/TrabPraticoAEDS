@@ -1,6 +1,39 @@
 #include "pizza.h"
 
+/*int pegaTamanhoArquivoPizza() {
+    int contadorLinhas = 0;
+    char linha[100];
+    FILE *arquivo = fopen("Pizzas.txt", "r");
 
+    if(arquivo == NULL){
+        printf("Erro ao abrir o arquivo para contar tamanho pizzas");
+        return 1;
+    }
+
+    while(fgets(linha, 100, arquivo) != NULL){
+        contadorLinhas++;
+    }
+
+    fclose(arquivo);
+
+    return contadorLinhas;
+} */
+
+void atualiza_pizza(Pizza2* pizza, int *qtd) {
+    FILE *arquivo = fopen("Pizzas.txt", "w");
+    if (arquivo == NULL)
+    {
+        printf("Erro ao abrir o arquivo para salvar os pizza.\n");
+    }
+
+    for (int i = 0; i < *qtd; i++)
+    {
+        fprintf(arquivo, "%d;%s;%c;%.2f;%s\n", pizza[i].Id, pizza[i].Nome,
+            pizza[i].Tamanho, pizza[i].Preco,pizza[i].Ingredientes);
+    }
+
+    fclose(arquivo);
+}
 void adicionar_pizza_CRUD(int *qnt_pizza)
 {
     Pizza *pizza = (Pizza *)malloc(sizeof(Pizza));
@@ -138,7 +171,6 @@ void adicionar_pizza_CRUD(int *qnt_pizza)
 
     free(pizza);
 }
-
 void visualizar_pizza_CRUD()
 {
     FILE *arquivo = fopen("Pizzas.txt", "r");
@@ -202,8 +234,72 @@ void visualizar_pizza_CRUD()
 
     fclose(arquivo);
 }
-void editar_pizza_CRUD(){}
-void remover_pizza_CRUD(){}
+void editar_pizza_CRUD(){}///////////////////////////////////////////////////////////////////
+void remover_pizza_CRUD(int *qtd) {
+    int novaQtd = 0,i=0, id_para_remover;
+    Pizza2 *pizza = (Pizza2 *)calloc(*qtd, sizeof(Pizza2));
+
+    if (pizza == NULL) {
+        printf("Erro ao alocar memória da pizza.\n");
+        return;
+    }
+
+    FILE *arquivo = fopen("Pizzas.txt", "r");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo de pizza.\n");
+        free(pizza);
+        return;
+    }
+    // Exibir os ingredientes
+    visualizar_pizza_CRUD();
+    printf("Digite o ID da pizza a ser removida:\n");getchar();
+    scanf("%d",&id_para_remover);
+    getchar();
+    while (i < (*qtd)) {
+        //printf(" i =  %d\n",i);
+        char linha[150];
+
+        if (fgets(linha, sizeof(linha), arquivo) != NULL) {
+            int Id;
+            char Nome[MAX_LENGTH_NAME_PIZZA];
+            char Tamanho;
+            float Preco;
+            char Ingredientes[MAX_INGREDIENTE];
+
+            // Verifique se a linha está no formato esperado
+            sscanf(linha, "%d;%29[^;];%c;%f;%29[^\n]", &Id, Nome, &Tamanho, &Preco,Ingredientes );
+            //printf("%d - %d;%s;%c;%.2f;%s",i, Id, Nome, Tamanho, Preco,Ingredientes );
+
+            // Comparar o ID lido com o ID para remover
+            if (Id !=  id_para_remover) {
+                // Se for diferente, mantemos no array
+                pizza[novaQtd].Id = Id;
+                strcpy(pizza[novaQtd].Nome,Nome);
+                pizza[novaQtd].Tamanho = Tamanho;
+                pizza[novaQtd].Preco = Preco;
+                strcpy(pizza[novaQtd].Ingredientes,Ingredientes);
+                //printf(" %d - nova qtd dentro %d\n",i,novaQtd);
+                novaQtd++;
+            }
+            i++;
+        } else {
+            i++;
+        }
+    }
+    //printf(" nova qtd fora  %d\n",novaQtd);
+
+    fclose(arquivo);
+
+    if (novaQtd == (*qtd)) {
+        printf("Nenhum ingrediente foi removido. ID nao encontrado.\n");
+    } else {
+        (*qtd) = novaQtd; // Atualiza a quantidade de ingredientes
+        atualiza_pizza(pizza, qtd);
+    }
+
+    free(pizza);
+
+}
 
 
 int menu_pizza() {

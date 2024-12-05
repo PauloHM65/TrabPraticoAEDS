@@ -41,7 +41,6 @@ int main() {
     int respFinal=0, qtdIngrediente=0,qtdPizza=0;
     qtdIngrediente = carrega_quantidade_de_ingredientes();
     qtdPizza = carrega_quantidade_de_pizza();
-    printf("%d",qtdIngrediente);
     //mostra menu principal e chama o opção selecionada
     respFinal = menu_principal();
     if(respFinal == 4) {
@@ -52,7 +51,7 @@ int main() {
             switch(respFinal) {
 
                 case 1:
-                    CRUD_PIZZA();
+                    CRUD_PIZZA(&qtdPizza);
                 break;
                 case 2:
                     CRUD_INGREDIENTE(&qtdIngrediente);

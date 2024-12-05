@@ -10,14 +10,6 @@
 #include "venda.h"
 
 
-void salvar_cardapio_pizza();
-void salvar_cardapio_ingedientes();
-
-void ler_cardapio_pizza();
-void ler_cardapio_ingedientes();
-
-
-
 
 int menu_principal();
 void CRUD_PIZZA();

@@ -1,15 +1,5 @@
-
 #include "basics.h"
 
-
-//Exportar e Importar Dados
-
-//exportação
-void salvar_cardapio_pizza(){}
-void salvar_cardapio_ingedientes(){}
-//importação
-void ler_cardapio_pizza(){}
-void ler_cardapio_ingedientes(){}
 
 
 
@@ -34,13 +24,13 @@ int menu_principal() {
     return NumeroOperacao;
 }
 
-void CRUD_PIZZA() {
+void CRUD_PIZZA(int *qtdPIZZA) {
     int respPizza =0;
     do {
         respPizza = menu_pizza();
         switch(respPizza) {
             case 1:
-                adicionar_pizza_CRUD();
+                adicionar_pizza_CRUD(qtdPIZZA);
                 break;
             case 2:
                 visualizar_pizza_CRUD();
@@ -49,7 +39,7 @@ void CRUD_PIZZA() {
                 editar_pizza_CRUD();
                 break;
             case 4:
-                remover_pizza_CRUD();
+                remover_pizza_CRUD(qtdPIZZA);
                 break;
             case 0:
                 printf(" --> CRUD_PIZZA encerrando!!<--\n");
