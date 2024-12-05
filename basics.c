@@ -36,7 +36,7 @@ void CRUD_PIZZA(int *qtdPIZZA) {
                 visualizar_pizza_CRUD();
                 break;
             case 3:
-                editar_pizza_CRUD();
+                editar_pizza_CRUD(qtdPIZZA);
                 break;
             case 4:
                 remover_pizza_CRUD(qtdPIZZA);

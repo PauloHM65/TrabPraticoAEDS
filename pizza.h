@@ -36,6 +36,9 @@ void visualizar_pizza_CRUD();
 void editar_pizza_CRUD();
 void remover_pizza_CRUD(int*);
 
+
+Pizza* pegaNomeEPrecoToken(const int);
+
 int pegaTamanhoArquivoPizza();
 
 int menu_pizza();

@@ -23,16 +23,15 @@
     <list default="true" id="b6162155-5516-41e9-893f-46039027e6c8" name="Changes" comment="venda pizza e crud ingredientes finalizados">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/basics.c" beforeDir="false" afterPath="$PROJECT_DIR$/basics.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/basics.h" beforeDir="false" afterPath="$PROJECT_DIR$/basics.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/basics.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/basics.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/main.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/pizza.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/pizza.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/venda.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TrabalhoPraticoAEDs1.dir/venda.c.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Ingredientes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Ingredientes.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Pizzas.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Pizzas.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/TrabalhoPraticoAEDs1.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/TrabalhoPraticoAEDs1.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pizza.c" beforeDir="false" afterPath="$PROJECT_DIR$/pizza.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pizza.h" beforeDir="false" afterPath="$PROJECT_DIR$/pizza.h" afterDir="false" />
     </list>
@@ -52,6 +51,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -67,8 +67,7 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_HOME_DIR$/bin/mingw/x86_64-w64-mingw32/include/ctype.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/paulo/OneDrive/Área de Trabalho/TrabalhoPraticoAEDs1/ingrediente.c" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/paulo/OneDrive/Área de Trabalho/TrabalhoPraticoAEDs1/ingrediente.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_HOME_DIR$/bin/mingw/x86_64-w64-mingw32/include/stdio.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />

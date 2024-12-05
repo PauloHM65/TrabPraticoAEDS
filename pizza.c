@@ -34,6 +34,46 @@ void atualiza_pizza(Pizza2* pizza, int *qtd) {
 
     fclose(arquivo);
 }
+Pizza* pegaNomeEPrecoToken(const int Id) {
+    Pizza *pizza = (Pizza*)malloc(sizeof(Pizza));
+    if (pizza == NULL) {
+        perror("Erro ao alocar memória para Pizza");
+        return NULL;
+    }
+
+    FILE* file = fopen("Ingredientes.txt", "r");
+    if (file == NULL) {
+        perror("Erro ao abrir o arquivo Ingredientes.txt");
+        free(pizza);
+        return NULL;
+    }
+
+    char linha[200];
+    pizza->Nome[0] = '\0'; // Inicializa com string vazia
+    pizza->Preco = 0.0;   // Inicializa com 0
+
+    while (fgets(linha, sizeof(linha), file) != NULL) {
+        int id = 0;
+        char nome[30] = "";
+        float preco = 0.0;
+
+        // Lê os dados da linha
+        if (sscanf(linha, "%d;%29[^;];%f", &id, nome, &preco) == 3) {
+            // Verifica se o ID lido é o mesmo do parâmetro
+            if (id == Id) {
+                strcpy(pizza->Nome, nome);
+                pizza->Preco = preco;
+                break; // Pizza encontrada, sair do loop
+            }
+        }
+    }
+
+    fclose(file);
+
+
+    return pizza;
+}
+
 void adicionar_pizza_CRUD(int *qnt_pizza)
 {
     Pizza *pizza = (Pizza *)malloc(sizeof(Pizza));
@@ -234,10 +274,9 @@ void visualizar_pizza_CRUD()
 
     fclose(arquivo);
 }
-    void editar_pizza_CRUD(int *qnt)
-{
+void editar_pizza_CRUD(int *qnt){
     char novo_nome[30], novo_tamanho;
-    int id_alteracao_pizza, posicao_alteracao_pizza = -1, opcao, id_novo_ing;
+    int id_alteracao_pizza, posicao_alteracao_pizza = -1, opcao=0, id_novo_ing;
     char linha[200];
 
     FILE *arquivo = fopen("Pizzas.txt", "r");
@@ -248,6 +287,7 @@ void visualizar_pizza_CRUD()
     }
 
     Pizza *pizza_aux = (Pizza *)malloc((*qnt) * sizeof(Pizza));
+    Pizza * pizza2 = (Pizza*)malloc(sizeof(Pizza));
     if (pizza_aux == NULL)
     {
         printf("Erro ao alocar memória.\n");
@@ -267,13 +307,20 @@ void visualizar_pizza_CRUD()
             ingredientes_part = strchr(ingredientes_part, ';') + 1;
 
             int t = 0;
-            char *token = strtok(ingredientes_part, ",");
-            while (token != NULL && t < 12)
-            { // Limitar a 12 ingredientes
+            char *token = strtok(ingredientes_part, ",");///////////////////////////////////////////////////////
+            while (token != NULL && t < 12){ // Limitar a 12 ingredientes
+                if(t==0) {
+                    token = strchr(token, ';') + 1;
+                }
+
                 pizza_aux[i].Ingredientes[t].id = atoi(token);
                 // Aqui seria necessário buscar o nome e preço do ingrediente usando o ID em um arquivo ou lista de ingredientes
-                sprintf(pizza_aux[i].Ingredientes[t].nome, "Ingrediente %d", pizza_aux[i].Ingredientes[t].id); // Mock
-                pizza_aux[i].Ingredientes[t].preco = 0.5;                                                      // Mock
+
+                pizza2 =  pegaNomeEPrecoToken(pizza_aux[i].Ingredientes[t].id);
+                //sprintf(pizza_aux[i].Ingredientes[t].nome, "Ingrediente %s", "NomeAUx" ); // Mock
+                //strcpy(pizza_aux[i].Ingredientes[t].nome,NomeAUx);// Mock
+                strcpy(pizza_aux[i].Ingredientes[t].nome,pizza2->Nome);
+                pizza_aux[i].Ingredientes[t].preco = pizza2->Preco;
                 token = strtok(NULL, ",");
                 t++;
             }
@@ -299,15 +346,12 @@ void visualizar_pizza_CRUD()
         }
     }
 
-    if (posicao_alteracao_pizza == -1)
-    {
-        printf("Pizza com ID %d não encontrada.\n", id_alteracao_pizza);
+    if (posicao_alteracao_pizza == -1){
+        printf("Pizza com ID %d nao encontrada.\n", id_alteracao_pizza);
         free(pizza_aux);
         return;
     }
-
-    do
-    {
+        do{
         printf("*******************************|\n");
         printf("O que gostaria de alterar ?    |\n");
         printf("*******************************|\n");
@@ -347,10 +391,10 @@ void visualizar_pizza_CRUD()
             break;
 
         case 3:
-            printf("Ingredientes atuais da pizza:\n");
+            printf("Ingredientes atuais da pizza:\n");////////////////////////////////////////////////////////
             for (int j = 0; pizza_aux[posicao_alteracao_pizza].Ingredientes[j].id != 0; j++)
             {
-                printf("%d - %s (R$ %.2f)\n", pizza_aux[posicao_alteracao_pizza].Ingredientes[j].id,
+                printf("%d - Ingrediente %s (R$ %.2f)\n", pizza_aux[posicao_alteracao_pizza].Ingredientes[j].id,
                        pizza_aux[posicao_alteracao_pizza].Ingredientes[j].nome,
                        pizza_aux[posicao_alteracao_pizza].Ingredientes[j].preco);
             }
@@ -364,11 +408,11 @@ void visualizar_pizza_CRUD()
             break;
 
         case 0:
-            printf("Saindo da edição...\n");
+            printf("Saindo da edicao...\n");
             break;
 
         default:
-            printf("OPÇÃO INVALIDA! DIGITE OUTRA.\n");
+            printf("OPÇAO INVALIDA! DIGITE OUTRA.\n");
             break;
         }
     } while (opcao != 0);
@@ -400,8 +444,9 @@ void visualizar_pizza_CRUD()
     fclose(arquivo);
     free(pizza_aux);
 
-    printf("Alterações salvas com sucesso!\n");
+    printf("Alteracoes salvas com sucesso!\n");
 }///////////////////////////////////////////////////////////////////
+
 void remover_pizza_CRUD(int *qtd) {
     int novaQtd = 0,i=0, id_para_remover;
     Pizza2 *pizza = (Pizza2 *)calloc(*qtd, sizeof(Pizza2));
@@ -467,6 +512,10 @@ void remover_pizza_CRUD(int *qtd) {
     free(pizza);
 
 }
+
+
+
+
 
 
 int menu_pizza() {
