@@ -3,7 +3,7 @@
 /*int pegaTamanhoArquivoPizza() {
     int contadorLinhas = 0;
     char linha[100];
-    FILE *arquivo = fopen("Pizzas.txt", "r");
+    FILE *arquivo = fopen("../dbARDSPRAtico/Pizzas.txt", "r");
 
     if(arquivo == NULL){
         printf("Erro ao abrir o arquivo para contar tamanho pizzas");
@@ -20,7 +20,7 @@
 } */
 
 void atualiza_pizza(Pizza2* pizza, int *qtd) {
-    FILE *arquivo = fopen("Pizzas.txt", "w");
+    FILE *arquivo = fopen("../dbARDSPRAtico/Pizzas.txt", "w");
     if (arquivo == NULL)
     {
         printf("Erro ao abrir o arquivo para salvar os pizza.\n");
@@ -41,9 +41,9 @@ Pizza* pegaNomeEPrecoToken(const int Id) {
         return NULL;
     }
 
-    FILE* file = fopen("Ingredientes.txt", "r");
+    FILE* file = fopen("../dbARDSPRAtico/Ingredientes.txt", "r");
     if (file == NULL) {
-        perror("Erro ao abrir o arquivo Ingredientes.txt");
+        perror("Erro ao abrir o arquivo ../dbARDSPRAtico/Ingredientes.txt");
         free(pizza);
         return NULL;
     }
@@ -103,11 +103,11 @@ void adicionar_pizza_CRUD(int *qnt_pizza)
 
 
         // Abrir o arquivo de ingredientes
-        FILE *arquivo_ingredientes = fopen("Ingredientes.txt", "r");
+        FILE *arquivo_ingredientes = fopen("../dbARDSPRAtico/Ingredientes.txt", "r");
 
         if (arquivo_ingredientes == NULL)
         {
-            printf("Erro ao abrir o arquivo de ingredientes. Certifique-se de que 'Ingredientes.txt' existe.\n");
+            printf("Erro ao abrir o arquivo de ingredientes. Certifique-se de que '../dbARDSPRAtico/Ingredientes.txt' existe.\n");
             break;
         }
 
@@ -151,7 +151,7 @@ void adicionar_pizza_CRUD(int *qnt_pizza)
                 break;
 
             // Reabrir o arquivo de ingredientes para buscar pelo ID
-            arquivo_ingredientes = fopen("Ingredientes.txt", "r");
+            arquivo_ingredientes = fopen("../dbARDSPRAtico/Ingredientes.txt", "r");
             if (arquivo_ingredientes == NULL)
             {
                 printf("Erro ao abrir o arquivo de ingredientes.\n");
@@ -181,7 +181,7 @@ void adicionar_pizza_CRUD(int *qnt_pizza)
             }
         }
 
-        FILE *arquivo_pizzas = fopen("Pizzas.txt", "a");
+        FILE *arquivo_pizzas = fopen("../dbARDSPRAtico/Pizzas.txt", "a");
 
         if (arquivo_pizzas == NULL)
         {
@@ -213,11 +213,11 @@ void adicionar_pizza_CRUD(int *qnt_pizza)
 }
 void visualizar_pizza_CRUD()
 {
-    FILE *arquivo = fopen("Pizzas.txt", "r");
+    FILE *arquivo = fopen("../dbARDSPRAtico/Pizzas.txt", "r");
 
     if (arquivo == NULL)
     {
-        printf("Erro ao abrir o arquivo\n");
+        printf("Erro ao abrir o arquivo Pizzas.txt para visualizar\n");
         return;
     }
 
@@ -244,7 +244,7 @@ void visualizar_pizza_CRUD()
                 int id_ingrediente = atoi(token);
 
                 // Carrega o ingrediente do arquivo de ingredientes
-                FILE *arquivo_ingredientes = fopen("Ingredientes.txt", "r");
+                FILE *arquivo_ingredientes = fopen("../dbARDSPRAtico/Ingredientes.txt", "r");
                 if (arquivo_ingredientes == NULL)
                 {
                     printf("\nErro ao abrir o arquivo de ingredientes.\n");
@@ -276,10 +276,11 @@ void visualizar_pizza_CRUD()
 }
 void editar_pizza_CRUD(int *qnt){
     char novo_nome[30], novo_tamanho;
-    int id_alteracao_pizza, posicao_alteracao_pizza = -1, opcao=0, id_novo_ing;
+    int id_alteracao_pizza, posicao_alteracao_pizza = -1, opcao=0, id_novo_ing,id_antigo_ing;
+    int posicao_array_pizza;
     char linha[200];
 
-    FILE *arquivo = fopen("Pizzas.txt", "r");
+    FILE *arquivo = fopen("../dbARDSPRAtico/Pizzas.txt", "r");
     if (arquivo == NULL)
     {
         printf("Erro ao abrir o arquivo para leitura.\n");
@@ -391,6 +392,7 @@ void editar_pizza_CRUD(int *qnt){
             break;
 
         case 3:
+
             printf("Ingredientes atuais da pizza:\n");////////////////////////////////////////////////////////
             for (int j = 0; pizza_aux[posicao_alteracao_pizza].Ingredientes[j].id != 0; j++)
             {
@@ -398,12 +400,32 @@ void editar_pizza_CRUD(int *qnt){
                        pizza_aux[posicao_alteracao_pizza].Ingredientes[j].nome,
                        pizza_aux[posicao_alteracao_pizza].Ingredientes[j].preco);
             }
-            printf("Digite o ID do novo ingrediente para substituir o primeiro ingrediente: ");
-            scanf("%d", &id_novo_ing);
+            printf("Digite o ID do ingrediente para substituir : ");
+            scanf("%d", &id_antigo_ing);
+            for (int j = 0; pizza_aux[posicao_alteracao_pizza].Ingredientes[j].id != 0; j++)
+            {
+                        if(pizza_aux[posicao_alteracao_pizza].Ingredientes[j].id == id_antigo_ing){
+                            posicao_array_pizza = j;
+                        }
+            }
             // Atualize o ingrediente selecionado
-            pizza_aux[posicao_alteracao_pizza].Ingredientes[0].id = id_novo_ing;
-            sprintf(pizza_aux[posicao_alteracao_pizza].Ingredientes[0].nome, "Ingrediente %d", id_novo_ing); // Mock
-            pizza_aux[posicao_alteracao_pizza].Ingredientes[0].preco = 0.5;                                  // Mock
+            visualizar_ingrediente_CRUD();
+            printf("Digite o ID do novo ingrediente  : ");
+            scanf("%d", &id_novo_ing);
+            FILE* file_ing = fopen("../dbARDSPRAtico/Ingredientes.txt","r");
+            char linhss[100],nomeauxx[30];
+            int iduaxx =0 ;float precoauxx = 0.0;
+            while(fgets(linhss,sizeof(linhss),file_ing )){
+                if(sscanf(linhss,"%d;%29[^;];%f",&iduaxx,nomeauxx,&precoauxx)==3){
+                    if(iduaxx == id_novo_ing){
+                        pizza_aux[posicao_alteracao_pizza].Ingredientes[posicao_array_pizza].id = iduaxx;
+                        strcpy(pizza_aux[posicao_alteracao_pizza].Ingredientes[posicao_array_pizza].nome,nomeauxx);
+                        pizza_aux[posicao_alteracao_pizza].Ingredientes[posicao_array_pizza].preco = precoauxx;
+                    }
+                }
+            }
+
+            fclose(file_ing);
             printf("Ingrediente alterado com sucesso!\n");
             break;
 
@@ -418,7 +440,7 @@ void editar_pizza_CRUD(int *qnt){
     } while (opcao != 0);
 
     // Reescrever as pizzas no arquivo
-    arquivo = fopen("Pizzas.txt", "w");
+    arquivo = fopen("../dbARDSPRAtico/Pizzas.txt", "w");
     if (arquivo == NULL)
     {
         printf("Erro ao abrir o arquivo para salvar as alterações.\n");
@@ -456,7 +478,7 @@ void remover_pizza_CRUD(int *qtd) {
         return;
     }
 
-    FILE *arquivo = fopen("Pizzas.txt", "r");
+    FILE *arquivo = fopen("../dbARDSPRAtico/Pizzas.txt", "r");
     if (arquivo == NULL) {
         printf("Erro ao abrir o arquivo de pizza.\n");
         free(pizza);
